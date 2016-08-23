@@ -1,0 +1,53 @@
+<div id="container" >
+<p id="notice"><%= notice %></p>
+<div id="tables">
+<div class="show-field">
+
+  <u><strong>Kopieransicht</strong></br></u>
+  </br>
+
+<table >
+  <tbody>
+
+  <td colspan="2"><u><strong><font size="5">Datum:</strong></u>
+  <%= @meeting.date.strftime("%d.%m.%y") %></font></td>
+  <tr>
+
+  <td id="show-header"><u><strong>Name</strong></u>
+  <td id="show-header"><u><strong>Terminart</strong></u>
+  <tr>
+
+  <td><%= @meeting.name %></td>
+  <td><%= @meeting.category %></td></br>
+  <tr>
+
+  <td id="show-header"><u><strong >Zielkontakt</strong></u>
+  <td id="show-header"><u><strong>Teilnehmer</strong></u></td>
+  <tr>
+  <% if @meeting.contactpsn.contact.name.blank? %>
+  <td><%= "nicht vergeben" %></td>
+  <% else %>
+  <td><%= @meeting.contactpsn.contact.name %></td>
+  <% end %>
+    <% if @meeting.contactpsn.contactpsn.full_name.blank? %>
+  <td><%= "nicht vergeben" %></td>
+  <% else %>
+  <td><%= @meeting.contactpsn.full_name %></td>
+  <% end %>
+
+<tr>
+  <td colspan="2" id="show-header"><u><strong>Information</strong></u></td>
+<tr>
+  <td colspan="2"><%= @meeting.description %></td>
+
+  </tbody>
+</table>
+
+</br>
+</br>
+
+<%= link_to 'Editieren', edit_meeting_path(@meeting) %> |
+<%= link_to 'Zurück', "/meetings" %>
+    </div>
+  </div>
+</div>

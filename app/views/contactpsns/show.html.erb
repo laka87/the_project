@@ -1,0 +1,16 @@
+<div id="container" >
+  <div id="container-forms" >
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contactpsn.first_name %>
+  </br>
+  <strong>Infotext:</strong>
+  <%= @contactpsn.description %>
+</p>
+
+<%= link_to 'Editieren', edit_contact_contactpsn_path(@contact, @contactpsn) %> |
+<%= link_to 'Zurück', contact_contactpsns_path(@contact) %>
+  </div> <!-- container-forms -->
+</div> <!-- container -->

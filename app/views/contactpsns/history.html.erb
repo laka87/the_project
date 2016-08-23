@@ -1,0 +1,37 @@
+<div id="container" >
+<h1>Detailtabelle für alle Kobtaktpersonen</h1>
+
+<table id="contactpsns" class="display">
+  <thead>
+    <tr>
+      <th>Kontaktperson</th>
+      <th>Kontakt</th>
+      <th>Erstellt von</th>
+      <th>Erstelldatum</th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @contactpsns.each do |contactpsn| %>
+      <tr>
+        <td ><%= contactpsn.first_name %></td>
+        <% if contactpsn.contact.blank? %>
+        <td ><%= "!nicht vergeben!" %></td>
+        <% else %>
+        <td ><%= contactpsn.contact.name %></td>
+        <% end %>
+        <td ><%= contactpsn.user.email %></td>
+        <td ><%= contactpsn.created_at %></td>
+         </tr>
+        <tr>
+      </tr>
+<% end %>
+
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Zurück zum Dashboard', home_path %>
+</div>

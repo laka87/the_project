@@ -1,0 +1,49 @@
+<div id="container" >
+<p id="notice"><%= notice %></p>
+<div id="tables">
+<div class="show-field">
+
+  <u><strong>Ansicht des Nutzers @user.email </strong></br></u>
+  </br>
+
+<table >
+  <tbody>
+
+  <td id="show-header"><u><strong>Email</strong></u>
+  <td id="show-header"><u><strong>Anzahl der Logins</strong></u>
+  <tr>
+
+  <td colspan="2"><u><strong><font size="5">Datum:</strong></u>
+  <%= @user.created_at.strftime("%d.%m.%y") %></font></td>
+  <tr>
+
+  <td><%= @user.email %></td>
+  <td><%= @user.sign_in_count %></td></br>
+  <tr>
+
+  <td id="show-header"><u><strong >zuletzt eingeloggt</strong></u>
+  <td id="show-header"><u><strong>Berechtigung</strong></u></td>
+  <tr>
+  <td><%= @user.last_sign_in_at %></td>
+  <% if @user.admin = false %>
+  <td><%= "normaler User" %></td>
+  <% else %>
+  <td><%= "Admin" %></td>
+  <% end %>
+
+<tr>
+  <td colspan="2" id="show-header"><u><strong>Name</strong></u></td>
+<tr>
+  <td colspan="2"><%= @user.full_name %></td>
+
+  </tbody>
+</table>
+
+</br>
+</br>
+
+<%= link_to 'Editieren', edit_user_path(@user) %> |
+<%= link_to 'Zurück', users_path %>
+    </div>
+  </div>
+</div>

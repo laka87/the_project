@@ -1,0 +1,2 @@
+module InvalidsHelper
+end

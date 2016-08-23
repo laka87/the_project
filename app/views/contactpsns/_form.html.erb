@@ -1,0 +1,57 @@
+<%= form_for([@contact, @contactpsn]) do |f| %>
+  <% if @contactpsn.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contactpsn.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @contactpsn.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div id="form_border">
+      <u><strong>Details</strong></br></u>
+      </br>
+    <%= f.label :call, "Anrede: " %><%= f.select :call, ["Frau", "Herr"] %> <%= f.label :position, "Position: " %><%= f.select :position, ["CEO", "Abteilungsleiter IT"] %> <%= f.label :Abteilung %><%= f.select :department, ["Controlling", "IT", "Rechnungswesen", "Wareneingang", "Führung"] %></br>
+    <%= f.label :first_name, "Vorname: " %> <%= f.text_field :first_name %> <%= f.label :last_name, "Nachname*: "%> <%= f.text_field :last_name %>
+  </div>
+</div>
+  <div class="field">
+    <div id="form_border">
+      <u><strong>Korrespondenz</strong></br></u>
+      </br>
+    <%= f.label :phone_one, "Telefon*" %><%= f.text_field :phone_one %> <%= f.label :phone_two ,"Telefon 2" %> <%= f.text_field :phone_two %></br>
+    <%=f.label :email, "Email*" %><%= f.text_field :email %> <%= f.label :fax ,"Fax" %><%= f.text_field :fax %>
+  </div>
+</div>
+  <div class="field">
+    <div id="form_border">
+      <u><strong>Firmenbezug</strong></br></u>
+    </br>
+
+    <%= f.label :business_rel, "Jet" %>
+    <%= f.radio_button :business_rel, "Jet" %> |
+    <%= f.label :business_rel, "Klinik" %>
+    <%= f.radio_button :business_rel, "Klinik"%> |
+    <%= f.label :business_rel, "Homecare"%>
+    <%= f.radio_button :business_rel, "Homecare" %>
+  </div>
+</div>
+
+
+  <div class="field">
+    <div id="form_border">
+      <u><strong>Infotext</strong></br></u>
+      </br>
+  <%= f.text_area :description,size: "60x5"  %><br>
+
+  <hr class="style-eight">
+  <div class="actions">
+    <%= f.submit "Kontaktperson erstellen" %>
+  </div>
+</div>
+
+<% end %>

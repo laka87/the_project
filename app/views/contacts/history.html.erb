@@ -1,0 +1,27 @@
+<div id="container" >
+<h1>Detailtabelle für alle Kontakte</h1>
+<table id="contactpsns" class="display">
+  <thead>
+    <tr>
+      <th>Kontakt</th>
+      <th>Erstellt von</th>
+      <th>Erstelldatum</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% @contact.each do |contact| %>
+      <tr>
+        <td style="padding-right:10px"><%= contact.name %></td>
+        <td style="padding-right:10px"><%= contact.user.email %></td>
+        <td style="padding-right:10px"><%= contact.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
+         </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Zurück zum Dashboard', home_path %>
+</div>

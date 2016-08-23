@@ -3,4 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $('#contactpsns').dataTable()
+  $('#contactpsns').dataTable({
+
+    "columnDefs": [{
+      "targets": [-1,-2,-3, -4],
+      "orderable": false,
+      "sortable": false,
+      "searchable": false
+
+      }]
+
+      "columnDefs": [{
+        "targets": -1,
+        "data": "edit_contact_contactpsn_path"
+        "render": function(data, type,full,meta) {
+            return '<a href="'+data+' ">editieren</a> ';
+        }
+      }]
+
+    });

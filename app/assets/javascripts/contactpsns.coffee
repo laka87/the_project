@@ -6,19 +6,27 @@ jQuery ->
   $('#contactpsns').dataTable({
 
     "columnDefs": [{
-      "targets": [-1,-2,-3, -4],
-      "orderable": false,
-      "sortable": false,
-      "searchable": false
-
-      }]
-
-      "columnDefs": [{
-        "targets": -1,
+        "targets": -3,
+        "sortable":false,
         "data": "edit_contact_contactpsn_path"
-        "render": function(data, type,full,meta) {
-            return '<a href="'+data+' ">editieren</a> ';
-        }
-      }]
+        "render": (data, type,full,meta) ->
+            return '<a href=" edit">Editieren</a> ';
+
+      },
+      {
+        "targets": -2,
+        "sortable":false,
+        "data": "show_contact_contactpsn_path"
+        "render": (data, type,full,meta) ->
+            return '<a href=" show">Anzeigen</a> ';
+      },
+      {
+          "targets": -1,
+          "sortable":false,
+          "data": "destroy_contact_contactpsn_path"
+          "render": (data, type,full,meta) ->
+          return '<a href=" show ">löschen</a> ';
+            }
+    ]
 
     });

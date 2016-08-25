@@ -51,6 +51,11 @@ def destroy
   end
 end
 
+def history
+  @meetings = Meeting.all
+end
+
+
 private
 
 

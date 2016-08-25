@@ -1,16 +1,126 @@
-<div id="container" >
-  <div id="container-forms" >
+<div id="container" ><!-- container-forms -->
 <p id="notice"><%= notice %></p>
+<div id="tables">
+<div class="show-field">
 
-<p>
-  <strong>Name:</strong>
-  <%= @contactpsn.first_name %>
-  </br>
-  <strong>Infotext:</strong>
-  <%= @contactpsn.description %>
-</p>
+<u><strong><h3>Kopieransicht</h3></strong></br></u>
+</br>
 
-<%= link_to 'Editieren', edit_contact_contactpsn_path(@contact, @contactpsn) %> |
-<%= link_to 'Zurück', contact_contactpsns_path(@contact) %>
-  </div> <!-- container-forms -->
+<table><!-- container-forms -->
+  <tbody><!-- container-forms -->
+
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Position der Person</strong></u>
+  <td id="show-header"><u><strong>Anrede</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contactpsn.position %></td>
+<!-- Call Content -->
+  <td><%= @contactpsn.call %></td>
+  <tr>
+
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Name der Person</strong></u>
+  <td id="show-header"><u><strong>zugehöriger Kontakt</strong></u>
+
+  <tr>
+<!-- Contactperon Content -->
+  <% if @contactpsn.full_name.blank? %>
+  <td><%= "nicht vergeben" %></td>
+  <% else %>
+  <td><%= @contactpsn.full_name %></td>
+  <% end %>
+<!-- Name Content -->
+  <% if @contactpsn.contact.name.blank? %>
+  <td><%= "nicht vergeben" %></td>
+  <% else %>
+  <td><%= @contactpsn.contact.name %></td>
+  <% end %>
+
+  <tr>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Email</strong></u>
+  <td id="show-header"><u><strong>FAX</strong></u>
+
+  <tr>
+  <!-- Position Content -->
+  <td><%= @contactpsn.email %></td>
+  <!-- Call Content -->
+  <td><%= @contactpsn.fax %></td>
+  <tr>
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Abteilung</strong></u>
+  <td id="show-header"><u><strong>Firmenbezug</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contactpsn.department %></td>
+<!-- Call Content -->
+  <td><%= @contactpsn.business_rel %></td>
+  <tr>
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Telefon 1</strong></u>
+  <td id="show-header"><u><strong>Telefon 2</strong></u>
+
+  <tr>
+  <!-- Position Content -->
+  <td><%= @contactpsn.phone_one %></td>
+  <!-- Call Content -->
+  <td><%= @contactpsn.phone_two %></td>
+  <tr>
+
+<!-- Headers -->
+  <td colspan="2" id="show-header"><u><strong>Information</strong></u></td>
+  <tr>
+  <td colspan="2"><%= @contactpsn.description %></td>
+
+
+  </tbody><!-- container-forms -->
+</table><!-- container-forms -->
+
+<br>
+
+<table><!-- container-forms -->
+  <tbody><!-- container-forms -->
+
+<% if !(@contactpsn.alt_town.blank? || @contactpsn.alt_postalcode.blank? || @contactpsn.alt_street.blank? || @contactpsn.alt_adv_street.blank?) %>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Stadt</strong></u>
+  <td id="show-header"><u><strong>Postleitzahl</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contactpsn.alt_town %></td>
+<!-- Call Content -->
+  <td><%= @contactpsn.alt_postalcode %></td>
+  <tr>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Alternative Strasse</strong></u>
+  <td id="show-header"><u><strong>Erweitert</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contactpsn.alt_street %></td>
+  <!-- Call Content -->
+  <td><%= @contactpsn.alt_adv_street %></td>
+  <tr>
+
+
+  </tbody><!-- container-forms -->
+</table><!-- container-forms -->
+<% end %>
+</br>
+</br>
+
+<div align="center" ><%= link_to 'Editieren', edit_contact_contactpsn_path(@contact, @contactpsn), :class => "btn btn-default"  %> |
+<%= link_to 'Zurück', contact_contactpsns_path(@contact),  :class => "btn btn-default"  %></div>
+<br>
+<div align="center" ><%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %></div>
+  </div>
+ </div>
 </div> <!-- container -->

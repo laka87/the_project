@@ -15,29 +15,42 @@
     <div id="form_border">
       <u><strong>Details</strong></br></u>
       </br>
+      <table>
+        <tbody>
     <%= f.label :call, "Anrede: " %><%= f.select :call, ["Frau", "Herr"] %> <%= f.label :position, "Position: " %><%= f.select :position, ["CEO", "Abteilungsleiter IT"] %> <%= f.label :Abteilung %><%= f.select :department, ["Controlling", "IT", "Rechnungswesen", "Wareneingang", "Führung"] %></br>
-    <%= f.label :first_name, "Vorname: " %> <%= f.text_field :first_name %> <%= f.label :last_name, "Nachname*: "%> <%= f.text_field :last_name %>
+    <td style="width:70px"><%= f.label :first_name, "Vorname: " %> </td> <td style="padding-right: 10px"><%= f.text_field :first_name %> </td>
+    <td style="width:70px"><%= f.label :last_name, "Nachname*: "%> </td> <td style="padding-right: 10px"><%= f.text_field :last_name %></td>
+      </tbody>
+    </table>
   </div>
 </div>
   <div class="field">
     <div id="form_border">
       <u><strong>Korrespondenz</strong></br></u>
       </br>
-    <%= f.label :phone_one, "Telefon*" %><%= f.text_field :phone_one %> <%= f.label :phone_two ,"Telefon 2" %> <%= f.text_field :phone_two %></br>
-    <%=f.label :email, "Email*" %><%= f.text_field :email %> <%= f.label :fax ,"Fax" %><%= f.text_field :fax %>
+      <table>
+        <tbody>
+    <td style="width:70px"><%= f.label :phone_one, "Telefon*" %></td> <td style="padding-right: 10px"><%= f.text_field :phone_one %></td>
+    <td style="width:70px"><%= f.label :phone_two ,"Telefon 2" %> </td> <td style="padding-right: 10px"><%= f.text_field :phone_two %></td>
+    <tr>
+    </tr>
+    <td style="padding-right: 10px"><%=f.label :email, "Email*" %></td> <td style="padding-right: 10px"><%= f.text_field :email %></td>
+    <td style="padding-right: 10px"><%= f.label :fax ,"Fax" %></td> <td style="padding-right: 10px"><%= f.text_field :fax %></td>
+      </tbody>
+    </table>
   </div>
 </div>
   <div class="field">
     <div id="form_border">
       <u><strong>Firmenbezug</strong></br></u>
     </br>
-
-    <%= f.label :business_rel, "Jet" %>
-    <%= f.radio_button :business_rel, "Jet" %> |
-    <%= f.label :business_rel, "Klinik" %>
-    <%= f.radio_button :business_rel, "Klinik"%> |
-    <%= f.label :business_rel, "Homecare"%>
-    <%= f.radio_button :business_rel, "Homecare" %>
+    <table>
+      <tbody>
+    <td style="width:170px"><%= f.label :business_rel, "Jet" %><%= f.radio_button :business_rel, "Jet" %> </td>
+    <td style="width:170px"><%= f.label :business_rel, "Klinik" %><%= f.radio_button :business_rel, "Klinik"%> </td>
+    <td style="width:170px"><%= f.label :business_rel, "Homecare"%><%= f.radio_button :business_rel, "Homecare" %></td>
+  </tbody>
+</table>
   </div>
 </div>
 
@@ -49,6 +62,19 @@
   <%= f.text_area :description,size: "60x5"  %><br>
 
   <hr class="style-eight">
+  <div class="field">
+      <table>
+        <tbody>
+    <td style="width:70px"><%= f.label :alt_postalcode, "PLZ: " %> </td> <td style="padding-right: 10px"><%= f.text_field :alt_postalcode %></td>
+    <td style="width:70px"><%= f.label :alt_town ,"Stadt: " %> </td> <td style="padding-right: 10px"><%= f.text_field :alt_town %></td>
+    <tr>
+    </tr>
+    <td style="padding-right: 10px"><%= f.label :alt_street, "Strasse: " %> </td> <td style="padding-right: 10px"><%= f.text_field :alt_street %> </td>
+    <td style="padding-right: 10px"><%= f.label :alt_adv_street ,"Adresszusatz: " %> </td> <td style="padding-right: 10px"><%= f.text_field :alt_adv_street %></td>
+       </tbody>
+     </table>
+  </div>
+
   <div class="actions">
     <%= f.submit "Kontaktperson erstellen" %>
   </div>

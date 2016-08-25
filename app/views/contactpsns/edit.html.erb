@@ -3,6 +3,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'anzeigen', edit_contact_contactpsn_path(@contact, @contactpsn) %> |
-<%= link_to 'zurück', contact_contactpsns_path(@contact) %>
+<div align="center" ><%= link_to 'anzeigen', contact_contactpsn_path(@contact, @contactpsn), :class => "btn btn-default" %> |
+<%= link_to 'zurück', contact_contactpsns_path(@contact) ,:class => "btn btn-default"%></div>
+<br>
+<div align="center" ><%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %></div>
 </div>

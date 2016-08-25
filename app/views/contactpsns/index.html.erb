@@ -12,14 +12,12 @@
 <% end %>
 <!-- Table für Kontakte -->
 <!-- Table für Kontakte -->
-<table id="contactpsns" class="display" >
+<table class="display">
   <thead>
     <tr>
-      <th >Name</th>
-      <th >Kategorie</th>
-      <th ></th>
-      <th ></th>
-      <th ></th>
+      <th colspan="1">Name</th>
+      <th colspan="1">Kategorie</th>
+      <th colspan="4">Operationen</th>
     </tr>
   </thead>
 
@@ -29,10 +27,16 @@
       <tr>
         <td ><%= contactpsn.full_name %></td>
         <td ><%= contactpsn.business_rel %></td>
-        <td ></td>
-        <td ></td>
-        <td ></td>
+        <td ><%= link_to "Neues Meeting" , new_meeting_path %><td>
+          <td ><%= link_to contact_contactpsn_path(@contact, contactpsn) do %>
+                <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
 
+
+            <td ><%= link_to edit_contact_contactpsn_path(@contact, contactpsn) do %>
+              <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
+
+            <td ><%= link_to contact_contactpsn_path(@contact, contactpsn), method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
+              <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
 
       <% end %>
     <% end %>

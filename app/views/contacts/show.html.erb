@@ -1,10 +1,116 @@
-<div id="container" >
+<div id="container" ><!-- container-forms -->
 <p id="notice"><%= notice %></p>
+<div id="tables">
+<div class="show-field">
+
+<u><strong><h3>Kopieransicht</h3></strong></br></u>
+</br>
+
+<table><!-- container-forms -->
+  <tbody><!-- container-forms -->
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Name</strong></u>
+  <td id="show-header"><u><strong>Firmentyp</strong></u>
+
+  <tr>
+<!-- Contactperon Content -->
+  <% if @contact.name.blank? %>
+  <td><%= "nicht vergeben" %></td>
+  <% else %>
+  <td><%= @contact.name %></td>
+  <% end %>
+<!-- Name Content -->
+  <td><%= @contact.type_of_contact %></td>
+
+  <tr>
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Postleitzahl</strong></u>
+  <td id="show-header"><u><strong>Stadt</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contact.postalcode %></td>
+<!-- Call Content -->
+  <td><%= @contact.name_of_town %></td>
+  <tr>
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Strasse</strong></u>
+  <td id="show-header"><u><strong>Erweitert</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contact.name_of_street %></td>
+<!-- Call Content -->
+  <td><%= @contact.adv_street %></td>
+  <tr>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Kontaktemail</strong></u>
+  <td id="show-header"><u><strong>Internetauftritt</strong></u>
+
+  <tr>
+<!-- Email Content -->
+  <td><%= @contact.email %></td>
+<!-- Webadress Content -->
+  <td><%= @contact.webaddress %></td>
+  <tr>
+
+<!-- Headers -->
+  <td id="show-header"><u><strong>Telefon</strong></u>
+  <td id="show-header"><u><strong>FAX</strong></u>
+
+  <tr>
+  <!-- Phone Content -->
+  <td><%= @contact.phone %></td>
+  <!-- Fax Content -->
+  <td><%= @contact.fax %></td>
+  <tr>
+
+<!-- Headers -->
+  <td colspan="2" id="show-header"><u><strong>Information</strong></u></td>
+  <tr>
+  <td colspan="2"><%= @contact.description %></td>
 
 
-  <strong>Name:</strong>
-  <%= @contact.name %>
+  </tbody><!-- container-forms -->
+</table><!-- container-forms -->
 
+<br>
+
+<table><!-- container-forms -->
+  <tbody><!-- container-forms -->
+
+<% if !(@contact.alt_town.blank? || @contact.alt_postalcode.blank? || @contact.alt_street.blank? || @contact.alt_adv_street.blank?) %>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Stadt</strong></u>
+  <td id="show-header"><u><strong>Postleitzahl</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contact.alt_town %></td>
+<!-- Call Content -->
+  <td><%= @contact.alt_postalcode %></td>
+  <tr>
+<!-- Headers -->
+  <td id="show-header"><u><strong>Alternative Strasse</strong></u>
+  <td id="show-header"><u><strong>Erweitert</strong></u>
+
+  <tr>
+<!-- Position Content -->
+  <td><%= @contact.alt_street %></td>
+  <!-- Call Content -->
+  <td><%= @contact.alt_adv_street %></td>
+  <tr>
+
+
+  </tbody><!-- container-forms -->
+</table><!-- container-forms -->
+<% end %>
+
+</br>
+</br>
 
 <%= link_to 'Editieren', edit_contact_path(@contact) %> |
 <%= link_to 'Zurück', "/contacts" %>

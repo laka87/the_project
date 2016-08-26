@@ -39,7 +39,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 
 #will_paginate
-gem 'will_paginate'
+gem 'will_paginate', "3.0.7"
 
 # Use Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'

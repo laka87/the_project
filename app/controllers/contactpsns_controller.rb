@@ -3,14 +3,15 @@ class ContactpsnsController < ApplicationController
   before_action :set_contact, except: [:history]
   before_action :set_contactpsn, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:delete]
+  helper_method :sort_column, :sort_direction
 
 #Index Method mit Searchable results param über Sunpot
 def index
-  @contactpsns = Contactpsn.all
-  #@search = Contactpsn.search do
-  #  fulltext params[:search]
-  #end
-  #@contactpsns = @search.results
+
+  @search = Contactpsn.search do
+    fulltext params[:search]
+  end
+  @contactpsns = @search.results
 end
 
 def show
@@ -64,6 +65,14 @@ end
 
 def contactpsn_params
 params.require(:contactpsn).permit(:first_name,:last_name,:email, :description, :business_rel, :position, :call , :fax, :phone_one, :phone_two, :department, :alt_adv_street, :alt_town, :alt_street, :alt_postalcode, :category)
+end
+
+def sort_column
+  Contactpsn.column_names.include?(params[:sort]) ? params[:sort] : "name"
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 end
 
 def is_admin?

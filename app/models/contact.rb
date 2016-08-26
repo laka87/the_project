@@ -15,6 +15,7 @@ has_many :contactpsns
 
 #Validierungen
 validates :name, presence: true
+validates :name, uniqueness: true
 
 
 end

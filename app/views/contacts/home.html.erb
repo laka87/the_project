@@ -3,10 +3,10 @@
 <div id="container" >
 <h3 center>Willkommen</h3>
 
-
-
-<h5 class="button" type="btn btn-default" ><%= link_to " neuen Termin erstellen", "meetings/new" %></h5><h5 class="button" type="btn btn-default" ><%= link_to "Alle Meetings einsehen", meetings_path %></h5>
-
+<div style="text-align:center; margin:25px 0 25px 0;">
+<%= link_to "neuen Termin erstellen","meetings/new", :class => "btn btn-success" %>
+<%= link_to "neuen Kontakt erstellen","contacts/new", :class => "btn btn-success" %>
+</div>
 
 <div id="contacts">
   <h2 id="month">
@@ -28,6 +28,60 @@
       </ul>
     <% end %>
   <% end %>
+</div>
+
+<br>
+<br>
+
+<div id="tables">
+<table style="width:100%; table-layout:fixed; font-size:11px;">
+  <thead >
+    <tr>
+    <th>Nächste Termine(7 Tage)</th>
+    <th>Zeit bis zum Termin</th>
+    <th>Kontakt</th>
+    <th style="width:100px">Datum</th>
+    </tr>
+  </thead>
+
+  <tbody >
+<% @meetings_next_7_days.each do |meeting| %>
+  <tr >
+    <td><%= meeting.name %></td>
+    <td><%= meeting.remaining_time  %></td>
+    <td><%= meeting.contactpsn.contact.name %></td>
+    <td><%= meeting.date.strftime("%d.%m. %Y") %></td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+
+<div id="tables">
+<table style="width:100%; table-layout:fixed; font-size:11px;">
+  <thead >
+    <tr>
+    <th>Wiedervorlagen(30 Tage)</th>
+    <th>Zeit bis zur Vorlage</th>
+    <th>Kontakt</th>
+    <th style="width:100px">Datum</th>
+    </tr>
+  </thead>
+
+  <tbody >
+<% @meetings_next_30_days.each do |meeting| %>
+  <tr >
+    <td><%= meeting.name %></td>
+    <td><%= meeting.remaining_time  %></td>
+    <td><%= meeting.contactpsn.contact.name %></td>
+    <td><%= meeting.date.strftime("%d.%m. %Y") %></td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+<% will_paginate @meetings_next_30_days %>
 </div>
 
 

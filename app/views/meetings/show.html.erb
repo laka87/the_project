@@ -29,7 +29,7 @@
   <% else %>
   <td><%= @meeting.contactpsn.contact.name %></td>
   <% end %>
-    <% if @meeting.contactpsn.contactpsn.full_name.blank? %>
+    <% if @meeting.contactpsn.full_name.blank? %>
   <td><%= "nicht vergeben" %></td>
   <% else %>
   <td><%= @meeting.contactpsn.full_name %></td>

@@ -15,15 +15,21 @@ def home
   @meetings_by_date = @meetings.group_by(&:date)
   @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
+  @meetings_next_7_days = @meetings.order(:date => "asc").where(:date => Time.now..Time.now.next_week.end_of_week).where(:category => "Termin" )
+  @meetings_next_7_days = @meetings_next_7_days.paginate(:per_page => 3, :page => params[:page])
+  
+  @meetings_next_30_days = @meetings.order(:date => "asc").where(:date => Time.now..Time.now.next_month).where(:category => "Wiedervorlage" )
+  @meetings_next_30_days = @meetings_next_30_days.paginate(:per_page => 3, :page => params[:page])
+
+
 end
 
 def index
-  #@search = Contact.search do
-  #  fulltext params[:search]
-  #end
-  #@contacts = @search.results
+  @search = Contact.search do
+    fulltext params[:search]
+  end
+  @contacts = @search.results
 
-    @contacts = Contact.all
 end
 
 def show
@@ -60,7 +66,7 @@ def destroy
 end
 
 def history
-  @contact = Contact.all
+  @contacts = Contact.all
 end
 
 private

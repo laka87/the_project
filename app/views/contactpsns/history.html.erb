@@ -17,7 +17,7 @@
         <td ><%= contactpsn.full_name %></td>
         <% if contactpsn.contact.blank? %>
         <td ><%= "!nicht vergeben!" %></td>
-        <% else %>
+       <% else %>
         <td ><%= contactpsn.contact.name %></td>
         <% end %>
         <td ><%= contactpsn.user.email %></td>
@@ -33,5 +33,5 @@
 
 <br>
 
-<%= link_to 'Zurück zum Dashboard', home_path %>
+<%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-success" %>
 </div>

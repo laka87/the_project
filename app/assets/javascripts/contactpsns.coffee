@@ -7,9 +7,7 @@ jQuery ->
     $('#reports').dataTable()
 
 $(document).ready(ready)
-#$(document).on('page:load', ready)
-$(document).on "turbolinks:load", ->
-  alert "page loaded"
+$(document).on('page:load', ready)
 
 #    "columnDefs": [{
 #        "targets": -1,

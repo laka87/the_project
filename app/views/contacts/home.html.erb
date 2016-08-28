@@ -22,7 +22,7 @@
         <% if !meeting.contactpsn.nil? %>
           <li><%= link_to meeting.name, meeting %></li>
         <% else %>
-         <li><%= "Kein Teilnehmer für diesen Termin vergeben" %></li>
+         <li><%= link_to "Kein Teilnehmer für diesen Termin vergeben", edit_meeting_path(meeting) %></li>
           <% end %>
         <% end %>
       </ul>
@@ -49,7 +49,11 @@
   <tr >
     <td><%= meeting.name %></td>
     <td><%= meeting.remaining_time  %></td>
+    <% if meeting.contactpsn.nil? %>
+    <td ><%= "!nicht vergeben!" %></td>
+   <% else %>
     <td><%= meeting.contactpsn.contact.name %></td>
+    <% end %>
     <td><%= meeting.date.strftime("%d.%m. %Y") %></td>
   </tr>
     <% end %>
@@ -59,24 +63,37 @@
 <br>
 <br>
 
-<div id="tables">
-<table style="width:100%; table-layout:fixed; font-size:11px;">
+<div id="tables" >
+<table style="font-size:10px;">
   <thead >
     <tr>
-    <th>Wiedervorlagen(30 Tage)</th>
-    <th>Zeit bis zur Vorlage</th>
-    <th>Kontakt</th>
-    <th style="width:100px">Datum</th>
+    <th colspan="3">Wiedervorlagen</th>
+    <th style="width: 60px">Zeit bis zur Vorlage</th>
+    <th style="width: 60px">Kontakt</th>
+    <th style="width: 60px">Datum</th>
     </tr>
   </thead>
 
-  <tbody >
+  <tbody style="text-align: center;">
 <% @meetings_next_30_days.each do |meeting| %>
   <tr >
-    <td><%= meeting.name %></td>
-    <td><%= meeting.remaining_time  %></td>
-    <td><%= meeting.contactpsn.contact.name %></td>
-    <td><%= meeting.date.strftime("%d.%m. %Y") %></td>
+
+    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 5%;"><%= link_to edit_meeting_path(meeting) do  %>
+    <i style=" color:green; vertical-align:baseline;" class="fa fa-check"></i><% end %></td>
+
+    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 25%"><%= meeting.name %></td>
+
+    <td style="box-shadow: inset 0px 0px 0px 1px grey;width: 5%"><%= link_to edit_meeting_path(meeting) do  %>
+      <i style="color:blue;" class="fa fa-pencil"></i><% end %></td>
+
+    <td style="width: 20%"><%= meeting.remaining_time  %></td>
+
+    <% if meeting.contactpsn.nil? %>
+    <td ><%= "!nicht vergeben!" %></td>
+   <% else %>
+    <td style="width: 25%"><%= meeting.contactpsn.contact.name %></td>
+    <% end %>
+    <td style="width: 10%"><%= meeting.date.strftime("%d.%m. %Y") %></td>
   </tr>
     <% end %>
   </tbody>

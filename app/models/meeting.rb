@@ -23,7 +23,7 @@ class Meeting < ActiveRecord::Base
 
 def remaining_time
   t = date.to_time - Time.now
-  "%2d Tage %2d Stunden %2d Minuten" % [t/86400, t/3600%24, t/60%60]
+  "%2d Tage %2d h %2d Min." % [t/86400, t/3600%24, t/60%60]
 
 end
 

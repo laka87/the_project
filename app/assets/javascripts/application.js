@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .
 //= require jquery-ui/datepicker
+//= require turbolinks
+
+$.fn.dataTable.ext.errMode= "none";

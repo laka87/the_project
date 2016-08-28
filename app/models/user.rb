@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
   has_many :meetings
 
 #Sunspot Searchable Block Users
-  searchable do
-    text :first_name
-    text :surname
-    text :email
-  end
+#  searchable do
+#    text :first_name
+#    text :surname
+#    text :email
+#  end
 
 
 

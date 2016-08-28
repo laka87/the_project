@@ -1,0 +1,62 @@
+<%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
+</br>
+</br>
+<div id="tables" style="font-size:3">
+<table>
+  <thead>
+    <td style="text-align:center; background-color:grey;"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
+  </thead>
+  <tbody>
+    <tr>
+<td style="text-align:center; background-color:grey;">
+
+<%= form_tag contacts_path, :method => :get do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "suchen", :name => nil, :class => "btn btn-success" %>
+<% end %></td>
+</tr>
+  </tbody>
+</table>
+
+<br>
+
+
+<table>
+  <thead>
+
+
+      <th style="text-align:center">Name</th>
+      <th style="text-align:center">Kontaktemail</th>
+      <th style="text-align:center">Telefon</th>
+      <th colspan="5" style="text-align:center">Optionen</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+    <% if current_user == contact.user %>
+      <tr>
+        <td style="text-align:center"><%= contact.name %></td>
+        <td style="text-align:center"><%= contact.email %></td>
+        <td style="text-align:center"><%= contact.phone %></td>
+
+        <td style="text-align:center"><%= link_to '+Kontaktpers', new_contact_contactpsn_path(contact), :class => "btn btn-success" %></td>
+        <td style="text-align:center"><%= link_to 'Kontaktpers', contact_contactpsns_path(contact), :class => "btn btn-success" %></td>
+        <td style="text-align:center"><%= link_to contact do %>
+          <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
+
+        <td style="text-align:center"><%= link_to edit_contact_path(contact) do %>
+          <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
+
+        <td style="text-align:center"><%= link_to contact, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
+          <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
+
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Zurück zum Dashboard', home_path , :class => "btn btn-default" %>

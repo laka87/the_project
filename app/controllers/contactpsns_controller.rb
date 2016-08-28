@@ -3,15 +3,15 @@ class ContactpsnsController < ApplicationController
   before_action :set_contact, except: [:history]
   before_action :set_contactpsn, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:delete]
-  helper_method :sort_column, :sort_direction
 
 #Index Method mit Searchable results param über Sunpot
 def index
 
-  @search = Contactpsn.search do
-    fulltext params[:search]
-  end
-  @contactpsns = @search.results
+#  @search = Contactpsn.search do
+#    fulltext params[:search]
+  #end
+  #@contactpsns = @search.results
+  @contactpsns = Contactpsn.all
 end
 
 def show
@@ -19,7 +19,7 @@ def show
 end
 
 def new
-    @contactpsn = Contactpsn.new
+  @contactpsn = Contactpsn.new
 end
 #Create Method für Assoziation mit Kontakt und User
 def create
@@ -53,6 +53,8 @@ def history
   @contactpsns = Contactpsn.all
 end
 
+
+
 private
 
 def set_contact
@@ -64,15 +66,7 @@ def set_contactpsn
 end
 
 def contactpsn_params
-params.require(:contactpsn).permit(:first_name,:last_name,:email, :description, :business_rel, :position, :call , :fax, :phone_one, :phone_two, :department, :alt_adv_street, :alt_town, :alt_street, :alt_postalcode, :category)
-end
-
-def sort_column
-  Contactpsn.column_names.include?(params[:sort]) ? params[:sort] : "name"
-end
-
-def sort_direction
-  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+params.require(:contactpsn).permit(:contact_id ,:first_name,:last_name,:email, :description, :business_rel, :position, :call , :fax, :phone_one, :phone_two, :department, :alt_adv_street, :alt_town, :alt_street, :alt_postalcode, :category)
 end
 
 def is_admin?
@@ -81,5 +75,7 @@ def is_admin?
      redirect_to root_url
   end
 end
+
+
 
 end

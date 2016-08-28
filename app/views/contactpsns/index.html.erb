@@ -3,49 +3,6 @@
 
 <h1>Alle Kontaktpersonen für <%= @contact.name %></h1>
 
-<!-- Searchfield für Substring Suche >3 Zeichen -->
-<%= form_tag contact_contactpsns_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "suchen", :name => nil%>
-<!-- Button für neue Kontakte -->
-<%= link_to 'Neue Kontaktperson', new_contact_contactpsn_path, :class => "btn btn-default" %>
-<% end %>
-<!-- Table für Kontakte -->
-<!-- Table für Kontakte -->
-<table class="display">
-  <thead>
-    <tr>
-      <th colspan="1">Name</th>
-      <th colspan="1">Kategorie</th>
-      <th colspan="1"> Ersteller </th>
-      <th colspan="4">Operationen</th>
-    </tr>
-  </thead>
-
-  <tbody >
-    <% @contactpsns.each do |contactpsn| %>
-    <% if @contact.name == contactpsn.contact.name && current_user == contactpsn.user %>
-      <tr>
-        <td ><%= contactpsn.full_name %></td>
-        <td ><%= contactpsn.business_rel %></td>
-        <td ><%= contactpsn.user.full_name %></td>
-        <td ><%= link_to "Neues Meeting" , new_meeting_path %><td>
-          <td ><%= link_to contact_contactpsn_path(@contact, contactpsn) do %>
-                <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
-
-
-            <td ><%= link_to edit_contact_contactpsn_path(@contact, contactpsn) do %>
-              <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
-
-            <td ><%= link_to contact_contactpsn_path(@contact, contactpsn), method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-              <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
-
-      <% end %>
-    <% end %>
-   </tr>
-  </tbody>
-</table>
+<%= render "contactpsns" %>
 <br>
-
-<%= link_to 'Zurück zum Dashboard', home_path %>
 </div>

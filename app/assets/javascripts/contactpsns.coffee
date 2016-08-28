@@ -3,7 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $('#contactpsns').dataTable()
+  ready = ->
+    $('#reports').dataTable()
+
+$(document).ready(ready)
+#$(document).on('page:load', ready)
+$(document).on "turbolinks:load", ->
+  alert "page loaded"
 
 #    "columnDefs": [{
 #        "targets": -1,

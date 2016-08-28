@@ -1,49 +1,9 @@
 <div id="container" >
 <p id="notice"><%= notice %></p>
-<div id="tables">
-<h1>Alle Kontakte</h1>
-<!-- Searchfield für Substring Suche >3 Zeichen -->
-<%= form_tag contacts_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "suchen", :name => nil%>
-<!-- Button für neue Kontakte -->
-<%= link_to 'Neuer Kontakt', new_contact_path %>
-<% end %>
-<!-- Table für Kontakte -->
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"><%= link_to 'Neuer Kontakt', new_contact_path %><th colspan="2"<%= submit_tag "suchen", :name => nil%></th>
-      <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-    <% if current_user == contact.user %>
-      <tr style="padding-right:10px">
-        <td style="padding-right:10px"><%= contact.name %></td>
-        <td style="padding-right:10px"><%= link_to 'Neue Kontaktperson', new_contact_contactpsn_path(contact) %></td>
-        <td style="padding-right:10px"><%= link_to 'Alle Kontaktpersonen', contact_contactpsns_path(contact) %></td>
+<h1>Alle Kontakte%></h1>
 
-        <td style="padding-right:25px"><%= link_to contact do %>
-        <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
+<%= render 'contacts' %>
 
-        <td style="padding-right:25px"><%= link_to edit_contact_path(contact) do %>
-        <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
-
-        <td style="padding-right:25px"><%= link_to contact, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-        <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
-
-        <% end %>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Zurück zum Dashboard', home_path %>
 </div>
 </div>

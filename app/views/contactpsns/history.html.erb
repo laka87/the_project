@@ -1,7 +1,7 @@
 <div id="container" >
 <h1>Detailtabelle für alle Kobtaktpersonen</h1>
 
-<table id="contactpsns" class="display">
+<table id="reports" class="display">
   <thead>
     <tr>
       <th>Kontaktperson</th>
@@ -14,7 +14,7 @@
 <tbody>
     <% @contactpsns.each do |contactpsn| %>
       <tr>
-        <td ><%= contactpsn.first_name %></td>
+        <td ><%= contactpsn.full_name %></td>
         <% if contactpsn.contact.blank? %>
         <td ><%= "!nicht vergeben!" %></td>
         <% else %>

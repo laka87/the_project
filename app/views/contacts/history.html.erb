@@ -1,6 +1,6 @@
 <div id="container" >
 <h1>Detailtabelle für alle Kontakte</h1>
-<table id="contactpsns" class="display">
+<table id="reports" class="display">
   <thead>
     <tr>
       <th>Kontakt</th>
@@ -11,11 +11,11 @@
   </thead>
 
 <tbody>
-    <% @contact.each do |contact| %>
+    <% @contacts.each do |contact| %>
       <tr>
-        <td style="padding-right:10px"><%= contact.name %></td>
-        <td style="padding-right:10px"><%= contact.user.email %></td>
-        <td style="padding-right:10px"><%= contact.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
+        <td ><%= contact.name %></td>
+        <td ><%= contact.user.email %></td>
+        <td ><%= contact.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
          </tr>
 <% end %>
   </tbody>

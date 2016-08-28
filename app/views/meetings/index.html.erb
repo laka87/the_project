@@ -3,10 +3,8 @@
 
 <h1>Alle Meetings</h1>
 
+<%= render "meetings" %>
 
-  <%= render 'meetings' %>
-
-<%= will_paginate @meetings %>
 <br>
 
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>

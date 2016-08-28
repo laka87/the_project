@@ -35,8 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 
 # sunspot
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+#gem 'sunspot_rails'
+#gem 'sunspot_solr'
 
 #will_paginate
 gem 'will_paginate', "3.0.7"

@@ -6,13 +6,13 @@ class Contactpsn < ActiveRecord::Base
   has_many :meetings
 
 #Sunspot Searchable Block Kontaktpersonen
-  searchable do
-    text :first_name
-    text :last_name
-    text :department
-    text :email
-    text :business_rel
-  end
+#  searchable do
+#    text :first_name
+#    text :last_name
+#    text :department
+#    text :email
+#    text :business_rel
+#  end
 
 #Zusammenfügen zu einem Helper Voller Name
   def full_name

@@ -17,7 +17,7 @@ def home
 
   @meetings_next_7_days = @meetings.order(:date => "asc").where(:date => Time.now..Time.now.next_week.end_of_week).where(:category => "Termin" )
   @meetings_next_7_days = @meetings_next_7_days.paginate(:per_page => 3, :page => params[:page])
-  
+
   @meetings_next_30_days = @meetings.order(:date => "asc").where(:date => Time.now..Time.now.next_month).where(:category => "Wiedervorlage" )
   @meetings_next_30_days = @meetings_next_30_days.paginate(:per_page => 3, :page => params[:page])
 
@@ -25,11 +25,12 @@ def home
 end
 
 def index
-  @search = Contact.search do
-    fulltext params[:search]
-  end
-  @contacts = @search.results
+  #@search = Contact.search do
+  #  fulltext params[:search]
+  #end
+  #@contacts = @search.results
 
+  @contacts = Contact.all
 end
 
 def show

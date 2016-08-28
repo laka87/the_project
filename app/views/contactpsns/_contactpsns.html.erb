@@ -1,0 +1,60 @@
+<%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
+</br>
+</br>
+<div id="tables">
+<table>
+  <thead>
+    <td style="text-align:center; background-color:grey;"><%= link_to '+Kontaktperson', new_contact_contactpsn_path, :class => "btn btn-success" %></td>
+  </thead>
+  <tbody>
+    <tr>
+<td style="text-align:center; background-color:grey;">
+
+<%= form_tag contact_contactpsns_path, :method => :get do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "suchen", :name => nil, :class => "btn btn-success" %>
+<% end %></td>
+</tr>
+  </tbody>
+</table>
+
+<br>
+
+<table id="reports" class="display">
+  <thead>
+    <tr>
+      <th >Name</th>
+      <th >Kategorie</th>
+      <th >Telefonnummer</th>
+      <th >FAX</th>
+      <th colspan="4">Operationen</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% @contactpsns.each do |contactpsn| %>
+    <% if !contactpsn.contact.nil? %>
+    <% if @contact.name == contactpsn.contact.name && current_user == contactpsn.user %>
+      <tr>
+        <td align="center" ><%= contactpsn.full_name %></td>
+        <td align="center" ><%= contactpsn.business_rel %></td>
+        <td align="center" ><%= contactpsn.phone_one %></td>
+        <td align="center" ><%= contactpsn.fax %></td>
+        <td align="center" colspan="1"><%= link_to "+Meeting" , new_meeting_path,  :class => "btn btn-success"  %></td>
+        <td align="center" colspan="1"><%= link_to contact_contactpsn_path(@contact, contactpsn) do %>
+            <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
+
+        <td align="center" colspan="1"><%= link_to edit_contact_contactpsn_path(@contact, contactpsn) do %>
+            <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
+
+        <td align="center" colspan="1"><%= link_to contact_contactpsn_path(@contact, contactpsn), method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
+            <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
+      </tr>
+      <% end %>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+</br>
+<%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
+</div>

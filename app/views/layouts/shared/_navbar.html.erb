@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" style="position:sticky; top:0px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header" style="height:25px">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -10,19 +10,19 @@
       </button>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-        <li><p class="navbar-brand"><%= current_user.full_name %> - <%= link_to "Ausloggen", destroy_user_session_path, :method => 'delete' %></p>
+        <li><p class="navbar-brand" style="padding:10px 10px 0px 0px;"><%= current_user.full_name %> - <%= link_to "Ausloggen", destroy_user_session_path, :method => 'delete' %></p>
         <% if current_user.admin? %>
-        <li><a href="/users"> Userliste </a></li>
+        <li><a href="/users" style="padding:10px 10px 0px 0px;">< Userliste ></a></li>
         <% end %>
-        <li><a href="/meetings">Alle Termine</a></li>
-        <li><a href="/contacts">Alle Kontakte |</a></li>
+        <li><a href="/meetings" style="padding:10px 10px 0px 0px;">< Alle Termine></a></li>
+        <li><a href="/contacts" style="padding:10px 10px 0px 0px;">< Alle Kontakte ></a></li>
         <% if current_user.admin? %>
-        <li><a href="/contacthistory">Kontaktpersonenhistorie</a></li>
-        <li><a href="/contacthistory">Kontakthistorie</a></li>
-        <li><a href="/meetings/history">Terminhistorie</a></li>
+        <li><a href="/contactpsns/history" style="padding:10px 10px 0px 0px;">< Kontaktpersonenhistorie ></a></li>
+        <li><a href="/contacthistory" style="padding:10px 10px 0px 0px;">< Kontakthistorie ></a></li>
+        <li><a href="/meetings/history" style="padding:10px 10px 0px 0px;">< Terminhistorie ></a></li>
         <% end %>
 
           </ul>

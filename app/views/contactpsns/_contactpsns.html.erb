@@ -1,32 +1,37 @@
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
 </br>
 </br>
-<div id="tables">
+<div id="tables" style="font-size:3">
 <table>
   <thead>
     <td style="text-align:center; background-color:grey;"><%= link_to '+Kontaktperson', new_contact_contactpsn_path, :class => "btn btn-success" %></td>
   </thead>
   <tbody>
     <tr>
-<td style="text-align:center; background-color:grey;">
 
-<%= form_tag contact_contactpsns_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "suchen", :name => nil, :class => "btn btn-success" %>
-<% end %></td>
-</tr>
+  <%= search_form_for([@contact,@search]) do |f| %>
+
+  <td style="text-align:center; background-color:grey;">
+      <%= f.label :last_name_or_business_rel_cont, "Suche nach Nachnamen/Kategorie" %>
+      <%= f.text_field :last_name_or_business_rel_cont %>
+
+      <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
+
+      <% end %>
+    </tr>
   </tbody>
 </table>
 
 <br>
+<%= will_paginate @contactpsns, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
 
-<table id="reports" class="display">
+<table>
   <thead>
     <tr>
-      <th >Name</th>
-      <th >Kategorie</th>
-      <th >Telefonnummer</th>
-      <th >FAX</th>
+      <th ><%= sort_link(@search,:last_name, "Name")%></th>
+      <th ><%= sort_link(@search,:business_rel, "Kategorie") %></th>
+      <th ><%= "Telefon" %></th>
+      <th ><%= "FAX" %></th>
       <th colspan="4">Operationen</th>
     </tr>
   </thead>

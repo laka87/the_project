@@ -39,7 +39,11 @@ gem 'bcrypt', '~> 3.1.7'
 #gem 'sunspot_solr'
 
 #will_paginate
-gem 'will_paginate', "3.0.7"
+gem 'will_paginate', "3.1.0"
+gem 'will_paginate-bootstrap'
+
+#ransack
+gem 'ransack'
 
 # Use Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'

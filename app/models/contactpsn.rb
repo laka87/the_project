@@ -27,7 +27,6 @@ end
 
 
 
-
 #t.integer  "user_id"
 #t.integer  "contact_id"
 #t.string   "category"

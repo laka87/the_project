@@ -16,14 +16,12 @@
       <tr>
         <td ><%= contactpsn.full_name %></td>
         <% if contactpsn.contact.blank? %>
-        <td ><%= "!nicht vergeben!" %></td>
+        <td ><%= "..nicht vergeben.." %></td>
        <% else %>
         <td ><%= contactpsn.contact.name %></td>
         <% end %>
         <td ><%= contactpsn.user.email %></td>
-        <td ><%= contactpsn.created_at %></td>
-         </tr>
-        <tr>
+        <td ><%= contactpsn.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
       </tr>
 <% end %>
 

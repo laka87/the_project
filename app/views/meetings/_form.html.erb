@@ -34,11 +34,19 @@
   </div>
 
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
+    <%= f.label :date, "Datum" %><%= " (Bitte in das Feld klicken)" %><br>
+    <%= f.text_field :date %><br>
   </div>
 
+  <div class="field">
+    <%= f.label :time_of_meeting, "Uhrzeit" %><br>
+    <%= f.text_field :time_of_meeting %>
+    <br>
+    <%= "Bitte Zeit eintragen. zB.(09:00)" %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Termin erstellen"%>
   </div>
 <% end %>

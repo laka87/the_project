@@ -28,13 +28,5 @@ def remaining_time
 end
 
 
-  #def self.searching(searching)
-  #  if searching
-  #      where('name LIKE ?', "%#{searching}%")
-  #  else
-  #      where(nil)
-  #    end
-  #  end
-
 
 end

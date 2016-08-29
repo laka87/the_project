@@ -4,30 +4,42 @@
 <div id="tables" style="font-size:3">
 <table>
   <thead>
-    <td style="text-align:center; background-color:grey;"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
+    <td style="text-align:center; background-color:grey;" colspan="4"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
   </thead>
   <tbody>
     <tr>
-<td style="text-align:center; background-color:grey;">
+      <%= search_form_for @search do |f| %>
 
-<%= form_tag contacts_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "suchen", :name => nil, :class => "btn btn-success" %>
-<% end %></td>
+          <td style="text-align:center; background-color:grey;">
+          <%= f.label :name_cont, "Suche nach Namen" %>
+          <%= f.text_field :name_cont %></td>
+          <td style="text-align:center; background-color:grey;">
+          <%= f.label :postalcode_or_alt_postalcode_cont, "mit/oder PLZ" %>
+          <%= f.text_field :postalcode_or_alt_postalcode_cont %></td>
+          <br>
+          <br>
+          <td style="text-align:center; background-color:grey;">
+          <%= f.label :name_of_town_cont, "in( Stadt )" %>
+          <%= f.text_field :name_of_town_cont %></td>
+          <td style="text-align:center; background-color:grey; vertical-align:bottom;">
+          <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
+
+          <% end %>
 </tr>
   </tbody>
 </table>
 
 <br>
 
+<%= will_paginate @contacts, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
 
 <table>
   <thead>
 
 
-      <th style="text-align:center">Name</th>
-      <th style="text-align:center">Kontaktemail</th>
-      <th style="text-align:center">Telefon</th>
+      <th style="text-align:center; width: 35%">Name</th>
+      <th style="text-align:center; width: 20%">Kontaktemail</th>
+      <th style="text-align:center; width: 20%">Telefon</th>
       <th colspan="5" style="text-align:center">Optionen</th>
     </tr>
   </thead>
@@ -36,20 +48,20 @@
     <% @contacts.each do |contact| %>
     <% if current_user == contact.user %>
       <tr>
-        <td style="text-align:center"><%= contact.name %></td>
-        <td style="text-align:center"><%= contact.email %></td>
+        <td style="text-align:center; width: 20%"><%= contact.name %></td>
+        <td style="text-align:center; width: 15%"><%= contact.email %></td>
         <td style="text-align:center"><%= contact.phone %></td>
 
         <td style="text-align:center"><%= link_to '+Kontaktpers', new_contact_contactpsn_path(contact), :class => "btn btn-success" %></td>
-        <td style="text-align:center"><%= link_to 'Kontaktpers', contact_contactpsns_path(contact), :class => "btn btn-success" %></td>
+        <td style="text-align:center"><%= link_to 'Kontaktpers', contact_contactpsns_path(contact), :class => "btn btn-success", 'data-no-turbolink'=> true %></td>
         <td style="text-align:center"><%= link_to contact do %>
-          <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
+          <i style="opacity: 0.8; color:black" class="fa fa-eye"></i><% end %></td>
 
         <td style="text-align:center"><%= link_to edit_contact_path(contact) do %>
-          <i style="opacity: 0.5;" class="fa fa-pencil"></i><% end %></td>
+          <i style="opacity: 0.8; color:black" class="fa fa-pencil"></i><% end %></td>
 
         <td style="text-align:center"><%= link_to contact, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-          <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
+          <i style="opacity: 0.8; color:black" class="fa fa-trash"></i><% end %></td>
 
         <% end %>
       </tr>

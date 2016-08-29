@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   get 'meetings/history' => 'meetings#history', as: :meetings_history
 
   #Routes Meetings
-  resources :meetings
+  resources :meetings do
+    member do
+      patch :complete
+    end
+  end
 
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :users, :only => [:index, :show, :edit]

@@ -2,34 +2,43 @@
 </br>
 </br>
 <div id="tables">
-<table>
+<table >
   <thead>
-    <td style="text-align:center; background-color:grey;"><%= link_to '+Meeting', new_meeting_path, :class => "btn btn-success" %></td>
+    <tr>
+<th style="text-align:center; background-color:grey;" colspan="4"><%= link_to '+Meeting', new_meeting_path, :class => "btn btn-success" %></th>
   </thead>
   <tbody>
-    <tr>
-<td style="text-align:center; background-color:grey;">
 
-<%= form_tag meetings_path, :method => :get do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "suchen", :name => nil, :class => "btn btn-success" %>
-<% end %></td>
-</tr>
+  <%= search_form_for @search do |f| %>
+
+<td style="text-align:center; background-color:grey;">
+      <%= f.label :name_cont, "Suche nach" %>
+      <%= f.text_field :name_cont %></td>
+<td style="text-align:center; background-color:grey;">
+      <%= f.label :contactpsn_last_name_cont, "mit Nachnamen" %>
+      <%= f.text_field :contactpsn_last_name_cont %></td>
+      <br>
+      <br>
+<td style="text-align:center; background-color:grey;">
+      <%= f.label :contactpsn_contact_name_cont, "in Kontakt" %>
+      <%= f.text_field :contactpsn_contact_name_cont %></td>
+<td style="text-align:center; background-color:grey; vertical-align:bottom">
+      <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
 <br>
-
+<%= will_paginate @meetings, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
 <table>
   <thead>
 <tr>
-      <th><%= "Name" %></th>
-      <th><%= "Datum" %></th>
-      <th><%= "Kategorie" %></th>
-      <th><%= "Teilnehmer" %></th>
-      <th><%= "Von Kontakt" %></th>
+      <th><%= sort_link(@search, :name, "Name") %></th>
+      <th><%= sort_link(@search, :date, "Datum")%></th>
+      <th><%= sort_link(@search, :category, "Kategorie") %></th>
+      <th><%= sort_link(@search, 'contactpsn_last_name', "Teilnehmer") %></th>
+      <th><%= sort_link(@search, 'contactpsn_contact_name', "beauftragt durch")%></th>
       <th colspan="3">Optionen</th>
-      <tr>
     </tr>
   </thead>
 
@@ -56,8 +65,7 @@
         <td><%= link_to meeting, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
            <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
         <% end %>
-      </tr>
-
-  <% end %>
+        </tr>
+    <% end %>
   </tbody>
 </table>

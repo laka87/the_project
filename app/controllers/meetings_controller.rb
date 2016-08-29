@@ -1,24 +1,21 @@
 class MeetingsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :complete]
 
 
 def index
 
 
 
-#@search = Meeting.search do
-#   fulltext params[:search]
-#  end
-#@meetings_search = @search.results
+@search = Meeting.joins(:contactpsn).search(params[:q])
+@meetings = @search.result.page(params[:page]).per_page(5)
 
-@meetings = Meeting.order(sort_column + " " + sort_direction)
-#@meetings = @meetings.paginate(:per_page => 5, :page => params[:page])
+#@meetings = @meetings.paginate(:page => params[:page],:per_page => 5)
 
-  @meetings_by_date = @meetings.group_by(&:date)
+@meetings_by_date = @meetings.group_by(&:date)
 
-  @date = params[:date] ? Date.parse(params[:date]) : Date.today
+@date = params[:date] ? Date.parse(params[:date]) : Date.today
 end
 
 def show
@@ -61,6 +58,11 @@ def history
   @meetings = Meeting.all
 end
 
+def complete
+  if @meeting.update_attribute(:completed_at, Time.now)
+  redirect_to home_path
+  end
+end
 
 private
 
@@ -70,16 +72,9 @@ def set_meeting
 end
 
 def meeting_params
-  params.require(:meeting).permit(:name, :contactpsn_id, :description, :date, :category)
+  params.require(:meeting).permit(:name, :contactpsn_id, :description, :date, :category, :time_of_meeting)
 end
 
-def sort_column
-  Meeting.column_names.include?(params[:sort]) ? params[:sort] : "name"
-end
-
-def sort_direction
-  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-end
 
 
 end

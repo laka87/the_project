@@ -1,6 +1,5 @@
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
 </br>
-</br>
 <div id="tables" style="font-size:3">
 <table>
   <thead>
@@ -21,8 +20,6 @@
     </tr>
   </tbody>
 </table>
-
-<br>
 <%= will_paginate @contactpsns, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
 
 <table>
@@ -36,7 +33,7 @@
     </tr>
   </thead>
 
-  <tbody >
+  <tbody>
     <% @contactpsns.each do |contactpsn| %>
     <% if !contactpsn.contact.nil? %>
     <% if @contact.name == contactpsn.contact.name && current_user == contactpsn.user %>

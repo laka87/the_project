@@ -4,24 +4,24 @@
 <div id="tables" style="font-size:3">
 <table>
   <thead>
-    <td style="text-align:center; background-color:grey;" colspan="4"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
+    <td style="text-align:center; background-color:silver;" colspan="4"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
   </thead>
   <tbody>
     <tr>
       <%= search_form_for @search do |f| %>
 
-          <td style="text-align:center; background-color:grey;">
+          <td style="text-align:center; background-color:silver;">
           <%= f.label :name_cont, "Suche nach Namen" %>
           <%= f.text_field :name_cont %></td>
-          <td style="text-align:center; background-color:grey;">
+          <td style="text-align:center; background-color:silver;">
           <%= f.label :postalcode_or_alt_postalcode_cont, "mit/oder PLZ" %>
           <%= f.text_field :postalcode_or_alt_postalcode_cont %></td>
           <br>
           <br>
-          <td style="text-align:center; background-color:grey;">
+          <td style="text-align:center; background-color:silver;">
           <%= f.label :name_of_town_cont, "in( Stadt )" %>
           <%= f.text_field :name_of_town_cont %></td>
-          <td style="text-align:center; background-color:grey; vertical-align:bottom;">
+          <td style="text-align:center; background-color:silver; vertical-align:bottom;">
           <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
 
           <% end %>

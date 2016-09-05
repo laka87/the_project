@@ -25,6 +25,9 @@ class Contactpsn < ActiveRecord::Base
       end
 end
 
+def full_name=(s)
+  super s.titeleize
+  end
 
 
 #t.integer  "user_id"

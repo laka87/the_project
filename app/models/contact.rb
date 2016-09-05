@@ -17,5 +17,7 @@ has_many :contactpsns
 validates :name, presence: true
 validates :name, uniqueness: true
 
-
+def name=(s)
+  super s.capitalize
+  end
 end

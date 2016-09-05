@@ -1,6 +1,7 @@
 class Meeting < ActiveRecord::Base
   belongs_to :user
-  belongs_to :contactpsn
+  belongs_to :contactpsn, dependent: :destroy
+  belongs_to :contact, dependent: :destroy
 
 
 

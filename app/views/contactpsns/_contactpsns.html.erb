@@ -1,16 +1,17 @@
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
 </br>
+<br>
 <div id="tables" style="font-size:3">
 <table>
   <thead>
-    <td style="text-align:center; background-color:grey;"><%= link_to '+Kontaktperson', new_contact_contactpsn_path, :class => "btn btn-success" %></td>
+    <td style="text-align:center; background-color:silver;"><%= link_to '+Kontaktperson', new_contact_contactpsn_path, :class => "btn btn-success" %></td>
   </thead>
   <tbody>
     <tr>
 
   <%= search_form_for([@contact,@search]) do |f| %>
 
-  <td style="text-align:center; background-color:grey;">
+  <td style="text-align:center; background-color:silver;">
       <%= f.label :last_name_or_business_rel_cont, "Suche nach Nachnamen/Kategorie" %>
       <%= f.text_field :last_name_or_business_rel_cont %>
 
@@ -20,6 +21,8 @@
     </tr>
   </tbody>
 </table>
+
+<br>
 <%= will_paginate @contactpsns, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
 
 <table>
@@ -59,4 +62,6 @@
 </table>
 </br>
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
+|
+<%= link_to 'Zurück', contacts_path, :class => "btn btn-default" %>
 </div>

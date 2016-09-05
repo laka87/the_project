@@ -1,18 +1,21 @@
 <div id="container" >
 
-
-<table>
+<div id="tables" >
+<table style="table-layout:fixed; text-align: center">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>email</th>
+        <th><%= "Vorname" %></th>
+        <th><%= "Nachname"%></th>
+        <th><%= "Email"%></th>
+        <th colspan="2"><%= "Optionen" %></th>
       </tr>
     </thead>
 
     <tbody>
         <% @users.each do |user| %>
         <tr style="padding-right:10px">
-          <td style="padding-right:10px"><%= user.full_name %></td>
+          <td style="padding-right:10px"><%= user.first_name %></td>
+          <td style="padding-right:10px"><%= user.surname %></td>
           <td style="padding-right:10px"><%= user.email %></td>
           <td style="padding-right:25px"><%= link_to user do %>
           <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
@@ -20,15 +23,11 @@
           <td style="padding-right:25px"><%= link_to edit_user_path(user) do %>
           <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
 
-          <td style="padding-right:25px"><%= link_to user, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-          <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
-
-
         </tr>
     <% end %>
     </tbody>
   </table>
 
 
-
+  </div>
 </div>

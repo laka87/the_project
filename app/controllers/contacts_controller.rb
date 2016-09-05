@@ -8,7 +8,7 @@ def home
   @contacts = Contact.all
 
   unless user_signed_in?
-    redirect_to new_user_session_path
+    redirect_to welcome_path
   end
 
   @meetings = Meeting.all
@@ -25,8 +25,9 @@ def home
 end
 
 def index
-  @search = Contact.joins(:contactpsns).search(params[:q])
+  @search = Contact.search(params[:q])
   @contacts = @search.result.page(params[:page]).per_page(5)
+  @contacts
 end
 
 def show

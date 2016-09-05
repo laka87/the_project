@@ -6,7 +6,7 @@ class ContactpsnsController < ApplicationController
 
 #Index Method mit Searchable results param über Sunpot
 def index
-  @search = Contactpsn.search(params[:q])
+  @search = Contactpsn.joins(:contact).search(params[:q])
   @contactpsns = @search.result.page(params[:page]).per_page(5)
 end
 

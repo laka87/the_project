@@ -1,0 +1,80 @@
+<!-- Termin Tabelle -->
+<div id="tables">
+<table style="width:100%; table-layout:fixed; font-size:11px;">
+  <thead >
+    <tr style="text-align:center">
+    <th>Nächste Termine(7 Tage)</th>
+    <th>Zeit bis zum Termin</th>
+    <th>Kontakt</th>
+    <th style="width:100px">Datum</th>
+    <% if current_user.admin? %>
+    <th>Nutzer</th>
+    <%end%>
+    </tr>
+  </thead>
+
+  <tbody >
+<% @meetings_next_7_days.each do |meeting| %>
+  <tr style="text-align:center">
+    <td><%= meeting.name %></td>
+    <td><%= meeting.remaining_time  %></td>
+    <% if meeting.contactpsn.nil? %>
+    <td ><%= "!nicht vergeben!" %></td>
+   <% else %>
+    <td><%= meeting.contactpsn.contact.name %></td>
+    <% end %>
+    <td><%= meeting.date.strftime("%d.%m.%Y") %></td>
+    <% if current_user.admin? %>
+    <th><%= meeting.user.full_name %></th>
+    <% end %>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="paginaton">
+    <%= will_paginate @meetings_next_7_days%>
+  </div>
+</div>
+<br>
+<br>
+<!-- Wiedervorlagentabelle Tabelle -->
+<div id="tables" >
+<table style="font-size:10px;">
+  <thead >
+    <tr>
+    <th colspan="3">Wiedervorlagen</th>
+    <th style="width: 60px">Zeit bis zur Vorlage</th>
+    <th style="width: 60px">Kontakt</th>
+    <th style="width: 60px">Datum</th>
+    </tr>
+  </thead>
+
+  <tbody style="text-align: center;">
+<% @meetings_next_30_days.each do |meeting| %>
+    <% if meeting.completed_at.blank? && meeting.remaining_time.to_i < 30  %>
+    <tr>
+    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 5%;"><%= link_to complete_meeting_path(meeting), method: :patch, data: { confirm: 'Sind sie sich absol Sicher? /nDieser Vorgang ist endgültig!' } do  %>
+    <i style=" color:green; vertical-align:baseline;" class="fa fa-check"></i><% end %></td>
+
+    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 25%"><%= meeting.name %></td>
+
+    <td style="box-shadow: inset 0px 0px 0px 1px grey;width: 5%"><%= link_to edit_meeting_path(meeting) do  %>
+      <i style="color:blue;" class="fa fa-pencil"></i><% end %></td>
+
+    <td style="width: 20%"><%= meeting.remaining_time  %></td>
+
+    <% if meeting.contactpsn.nil? %>
+    <td ><%= "!nicht vergeben!" %></td>
+   <% else %>
+    <td style="width: 25%"><%= meeting.contactpsn.contact.name %></td>
+    <% end %>
+    <td style="width: 10%"><%= meeting.date.strftime("%d.%m.%Y") %></td>
+
+  </tr>
+  <%end %>
+    <% end %>
+  </tbody>
+  <%= will_paginate @meetings_next_30_days %>
+</table>
+
+</div>

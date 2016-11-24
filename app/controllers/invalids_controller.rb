@@ -1,2 +1,0 @@
-class InvalidsController < ApplicationController
-end

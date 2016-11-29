@@ -1,13 +1,12 @@
+
 <div id="container">
-
-<ul class="nav nav-tabs" id="tabs">
-  <li role="presentation" class="active" ><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab" > Kalender</a></li>
-  <li role="presentation"><a href="#tab-2" role="tab" aria-controls="tab-2" data-toggle="tab" >Tabellen</a></li>
-  <% if current_user.admin? %>
-  <li role="presentation"><a href="#tab-3" role="tab" aria-controls="tab-3" data-toggle="tab" >Kalender(Alle Rechte)</a></li>
-  <% end %>
-</ul>
-
+  <ul class="nav nav-tabs" id="tabs">
+    <li role="presentation" class="active" ><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab" > Kalender</a></li>
+    <li role="presentation"><a href="#tab-2" role="tab" aria-controls="tab-2" data-toggle="tab" >Tabellen</a></li>
+    <% if current_user.admin? %>
+    <li role="presentation"><a href="#tab-3" role="tab" aria-controls="tab-3" data-toggle="tab" >Kalender(Alle Rechte)</a></li>
+    <% end %>
+  </ul>
 </br>
 
 <h3 center>Willkommen</h3>

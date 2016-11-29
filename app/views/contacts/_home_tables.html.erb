@@ -15,6 +15,7 @@
 
   <tbody >
 <% @meetings_next_7_days.each do |meeting| %>
+  <% if current_user == meeting.user %>
   <tr style="text-align:center">
     <td><%= meeting.name %></td>
     <td><%= meeting.remaining_time  %></td>
@@ -24,10 +25,8 @@
     <td><%= meeting.contactpsn.contact.name %></td>
     <% end %>
     <td><%= meeting.date.strftime("%d.%m.%Y") %></td>
-    <% if current_user.admin? %>
-    <th><%= meeting.user.full_name %></th>
-    <% end %>
   </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

@@ -16,10 +16,13 @@ Rails.application.routes.draw do
 
   #Routes Meetings
   resources :meetings do
+    get :autocomplete_contact_name, :on => :collection
     member do
       patch :complete
     end
   end
+
+
 
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :users, :only => [:index, :show, :edit]

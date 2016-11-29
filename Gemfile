@@ -18,6 +18,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-turbolinks'
 gem 'jquery-datatables-rails', "~> 3.3.0"
+gem "rails4-autocomplete"
 #jquery ui
 gem'jquery-ui-rails'
 

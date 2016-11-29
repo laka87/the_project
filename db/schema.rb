@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829015408) do
+ActiveRecord::Schema.define(version: 20161129212510) do
 
   create_table "contactpsns", force: :cascade do |t|
     t.string   "first_name"
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20160829015408) do
     t.string   "category"
     t.string   "time_of_meeting"
     t.datetime "completed_at"
+    t.date     "date_hours"
+    t.date     "date_minutes"
   end
 
   create_table "tests", force: :cascade do |t|

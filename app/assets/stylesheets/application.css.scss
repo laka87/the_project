@@ -100,7 +100,7 @@ max-width: 100%
   font-family: 'Lato', sans-serif;
   padding: 15px 15px;
   border: solid 1px black;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 #container #notice {
@@ -229,6 +229,20 @@ textarea {
  #flash_alert {
    color: #D00;
  }
+
+ .nav-tabs {
+
+   margin: 0 auto;
+   white-space: nowrap;
+   padding: 0px 0px 0px 0px;
+   border: none;
+   li > a {
+     color: black;
+     border: solid 1px #999;
+     border-radius: 4px;
+   }
+ }
+
 
  .error_messages, #error_explanation {
    width: 400px;

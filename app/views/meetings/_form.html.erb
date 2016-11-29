@@ -29,13 +29,7 @@
 
   <div class="field">
     <%= f.label :Teilnehmer %><br>
-    <%= f.grouped_collection_select :contactpsn_id, Contact.order(:name),
-          :contactpsns, :name, :id, :full_name, prompt: "Bitte wählen"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :Teilnehmer %><br>
-    <%= f.text_field :name, prompt: "Bitte wählen"%>
+    <%= f.autocomplete_field :name, autocomplete_contact_name_meetings_path  %>
   </div>
 
 

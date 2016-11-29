@@ -1,8 +1,7 @@
 class MeetingsController < ApplicationController
-
+  autocomplete :contact, :name
   before_action :authenticate_user!
   before_action :set_meeting, only: [:show, :edit, :update, :destroy, :complete]
-
 
 def index
 

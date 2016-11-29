@@ -68,6 +68,7 @@ def history
 end
 
 
+
 private
 
 def set_contact

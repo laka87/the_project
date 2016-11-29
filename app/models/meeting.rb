@@ -21,21 +21,10 @@ class Meeting < ActiveRecord::Base
 #
 #    end
 
-def contact_name
-  contact.try(:name)
-end
-
-def contact_name=(name)
-  self.contact = Contact.find_by_name(name) if name.present?
-end
-
-
 def remaining_time
   t = date.to_time - Time.now
-  "%2d Tage %2d h %2d Min." % [t/86400, t/3600%24, t/60%60]
+  "%2d Tage %2d h %2d Min." % [t/86400, t/3600%24 , t/60%60]
 
 end
-
-
 
 end

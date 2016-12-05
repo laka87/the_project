@@ -2,6 +2,7 @@ class Contact < ActiveRecord::Base
 #Assoziationen Kontakt
 belongs_to :user
 has_many :contactpsns
+has_many :meetings
 
 #Sunspot Searchable Block Kontakte
 #  searchable do
@@ -14,8 +15,8 @@ has_many :contactpsns
 #  end
 
 #Validierungen
-validates :name, presence: true
-validates :name, uniqueness: true
+validates :contact_name, presence: true
+validates :contact_name, uniqueness: true
 
 def name=(s)
   super s.capitalize

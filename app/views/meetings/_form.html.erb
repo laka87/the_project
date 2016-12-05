@@ -1,5 +1,5 @@
 
-<%= form_for(@meeting) do |f| %>
+<%= form_for @meeting do |f| %>
   <% if @meeting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this test from being saved:</h2>
@@ -13,13 +13,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category, "Kategorie" %><br>
-    <%= f.select :category, ["Termin", "Wiedervorlage"] %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name, "Name" %><br>
-    <%= f.text_field :name %>
+    <%= f.label :meeting_name, "Name" %><br>
+    <%= f.text_field :meeting_name %>
   </div>
 
   <div class="field">
@@ -28,8 +23,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :Teilnehmer %><br>
-    <%= f.autocomplete_field :name, autocomplete_contact_name_meetings_path  %>
+    <%= f.label :contact_title, "Teilnehmer" %><%= "(bitte eingeben)" %><br>
+    <%= f.text_field :contact_title , data: {autocomplete_source: autocomplete_path} %>
   </div>
 
 

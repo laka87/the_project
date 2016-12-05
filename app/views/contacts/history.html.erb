@@ -13,7 +13,7 @@
 <tbody>
     <% @contacts.each do |contact| %>
       <tr>
-        <td ><%= contact.name %></td>
+        <td ><%= contact.contact_name %></td>
         <td ><%= contact.user.email %></td>
         <td ><%= contact.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
          </tr>

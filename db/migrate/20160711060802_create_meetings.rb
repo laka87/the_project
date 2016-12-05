@@ -2,7 +2,7 @@ class CreateMeetings < ActiveRecord::Migration
   def change
     create_table :meetings do |t|
 
-      t.string :name
+      t.string :meeting_name
       t.text :description
 
       t.timestamps null: false

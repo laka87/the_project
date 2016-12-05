@@ -1,27 +1,23 @@
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
 </br>
+</br>
 <div id="tables">
 <table>
   <thead>
     <tr>
-<th style="text-align:center; background-color:silver;" colspan="4"><%= link_to '+Meeting', new_meeting_path, :class => "btn btn-success" %></th>
+<th style="text-align:center; background-color:silver;" colspan="3"><%= link_to '+Meeting', new_meeting_path, :class => "btn btn-success" %></th>
   </thead>
   <tbody>
 
   <%= search_form_for @search do |f| %>
 
 <td style="text-align:center; background-color:silver;">
-      <%= f.label :name_cont, "Suche nach" %>
-      <%= f.text_field :name_cont %></td>
+      <%= f.label :meeting_name_cont, "Suche nach" %>
+      <%= f.text_field(:meeting_name_cont) %></td>
+
 <td style="text-align:center; background-color:silver;">
-      <%= f.label :contactpsn_last_name_cont, "mit Nachnamen" %>
-      <%= f.text_field :contactpsn_last_name_cont %></td>
-      <br>
-      <br>
-<td style="text-align:center; background-color:silver;">
-      <%= f.label :contactpsn_contact_name_cont, "in Kontakt" %>
-      <%= f.text_field :contactpsn_contact_name_cont %></td>
 <td style="text-align:center; background-color:silver; vertical-align:bottom">
+
       <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
       </tr>
     <% end %>
@@ -32,11 +28,9 @@
 <table>
   <thead>
 <tr>
-      <th><%= sort_link(@search, :name, "Name") %></th>
+      <th><%= sort_link(@search, :meeting_name, "Name") %></th>
       <th><%= sort_link(@search, :date, "Datum")%></th>
-      <th><%= sort_link(@search, :category, "Kategorie") %></th>
-      <th><%= sort_link(@search, 'contactpsn_last_name', "Teilnehmer") %></th>
-      <th><%= sort_link(@search, 'contactpsn_contact_name', "beauftragt durch")%></th>
+      <th><%= "Teilnehmer" %></th>
       <th colspan="3">Optionen</th>
     </tr>
   </thead>
@@ -45,15 +39,12 @@
     <% @meetings.each do |meeting| %>
     <% if current_user == meeting.user %>
       <tr>
-        <td ><%= meeting.name %></td>
+        <td ><%= meeting.meeting_name %></td>
         <td ><%= meeting.date.strftime("%d.%m.%y") %></td>
-        <td align="center"><%= meeting.category %></td>
-        <% if meeting.contactpsn.nil? %>
-        <td align="center"><%= "Person gelöscht" %></td>
-        <td align="center"><%= "Keine Referenz" %></td>
+        <% if meeting.contact.nil? %>
+        <td align="center"><%= "Kontakt nicht vergeben" %></td>
         <% else %>
-        <td align="center" colspan="1"><%= meeting.contactpsn.full_name %></td>
-        <td align="center" colspan="1"><%= meeting.contactpsn.contact.name %></td>
+        <td align="center" colspan="1"><%= meeting.contact.contact_name %></td>
         <% end %>
         <td ><%= link_to meeting, 'data-no-turbolink' => true do %>
            <i style="opacity: 0.5;" class="fa fa-eye" ></i><% end %></td>

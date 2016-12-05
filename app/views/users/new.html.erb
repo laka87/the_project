@@ -1,0 +1,41 @@
+<div id="container" style="width: 25%">
+<h3>Registrieren</h3>
+
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+    <%= f.label :first_name, "Vorname" %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname, "Nachname" %><br />
+    <%= f.text_field :surname, autofocus: true %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "Passwort" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> Zeichen minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Passwort bestätigen" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Registrieren", class: "btn btn-default" %>
+  </div>
+<% end %>
+
+
+</div>

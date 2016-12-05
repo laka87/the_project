@@ -11,8 +11,8 @@
       <%= search_form_for @search do |f| %>
 
           <td style="text-align:center; background-color:silver;">
-          <%= f.label :name_cont, "Suche nach Namen" %>
-          <%= f.text_field :name_cont %></td>
+          <%= f.label :contact_name_cont, "Suche nach Namen" %>
+          <%= f.text_field :contact_name_cont %></td>
           <td style="text-align:center; background-color:silver;">
           <%= f.label :postalcode_or_alt_postalcode_cont, "mit/oder PLZ" %>
           <%= f.text_field :postalcode_or_alt_postalcode_cont %></td>
@@ -37,7 +37,7 @@
   <thead>
 
 
-      <th ><%= sort_link(@search,:name, "Name") %></th>
+      <th ><%= sort_link(@search,:contact_name, "Name") %></th>
       <th ><%= sort_link(@search,:email, "Email") %></th>
       <th style="text-align:center; width: 20%">Telefon</th>
       <th colspan="5" style="text-align:center">Optionen</th>
@@ -49,7 +49,7 @@
     <% if current_user == contact.user %>
 
       <tr>
-        <td style="text-align:center; width: 20%"><%= contact.name %></td>
+        <td style="text-align:center; width: 20%"><%= contact.contact_name %></td>
         <td style="text-align:center; width: 15%"><%= contact.email %></td>
         <td style="text-align:center"><%= contact.phone %></td>
 

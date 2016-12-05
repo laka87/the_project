@@ -10,19 +10,17 @@
     <%= link_to ">", date: @date.next_month %>
   </h2>
   <%= calendar @date do |date| %>
-  <% if date.day == Date.today.strftime("%D") %>
-  <div style="background-color:red" ><%= date.day %> </div>
-  <%else %>
+
   <%= date.day %>
-  <% end %>
+
     <% if @meetings_by_date[date] %>
       <ul style="list-style:none; padding 0">
         <% @meetings_by_date[date].each do |meeting| %>
         <% if current_user == meeting.user %>
         <% if !meeting.completed_at.blank? || Time.now.to_formatted_s(:number) > meeting.date.to_formatted_s(:number) %>
-          <strike><li style="Opacity:0.4">[<%= meeting.time_of_meeting %>] <%= link_to meeting.name, meeting %></li></strike>
-        <% elsif !meeting.contactpsn.nil? %>
-          <li>[<%= meeting.time_of_meeting %>] <%= link_to meeting.name, meeting %></li>
+          <strike><li style="Opacity:0.4">[<%= meeting.time_of_meeting %>] <%= link_to meeting.contact.contact_name, meeting %></li></strike>
+        <% elsif !meeting.contact.nil? %>
+          <li>[<%= meeting.time_of_meeting %>] <%= link_to meeting.contact.contact_name, meeting %></li>
         <% else %>
          <li><%= link_to "Kein Teilnehmer für diesen Termin vergeben", edit_meeting_path(meeting) %></li>
         <% end %>

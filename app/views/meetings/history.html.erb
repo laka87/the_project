@@ -13,7 +13,7 @@
 <tbody>
     <% @meetings.each do |meeting| %>
       <tr>
-        <td style="padding-right:10px"><%= meeting.name %></td>
+        <td style="padding-right:10px"><%= meeting.meeting_name %></td>
         <td style="padding-right:10px"><%= meeting.user.full_name %></td>
         <td style="padding-right:10px"><%= meeting.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>
          </tr>

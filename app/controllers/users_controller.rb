@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :is_admin? , only: [:index, :show, :edit]
   before_action :authenticate_user!,  only: [:index, :show, :edit]
 
+
+
   def index
     @users = User.all
   end
@@ -10,8 +12,39 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(sign_up_params)
+    if @user.save
+      redirect_to home_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(account_update_params)
+      redirect_to home_path
+    end
+  end
+
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:first_name, :surname,:email, :password, :password_confirmation, :admin)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:first_name, :surname, :email, :password, :password_confirmation, :admin)
   end
 
 private
@@ -22,7 +55,6 @@ def is_admin?
      redirect_to welcome_path
   end
 end
-
 
 
 end

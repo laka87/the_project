@@ -17,12 +17,12 @@
 <% @meetings_next_7_days.each do |meeting| %>
   <% if current_user == meeting.user %>
   <tr style="text-align:center">
-    <td><%= meeting.name %></td>
+    <td><%= meeting.meeting_name %></td>
     <td><%= meeting.remaining_time  %></td>
     <% if meeting.contactpsn.nil? %>
     <td ><%= "!nicht vergeben!" %></td>
    <% else %>
-    <td><%= meeting.contactpsn.contact.name %></td>
+    <td><%= meeting.contact.contact_name %></td>
     <% end %>
     <td><%= meeting.date.strftime("%d.%m.%Y") %></td>
   </tr>
@@ -55,7 +55,7 @@
     <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 5%;"><%= link_to complete_meeting_path(meeting), method: :patch, data: { confirm: 'Sind sie sich absol Sicher? /nDieser Vorgang ist endgültig!' } do  %>
     <i style=" color:green; vertical-align:baseline;" class="fa fa-check"></i><% end %></td>
 
-    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 25%"><%= meeting.name %></td>
+    <td style="box-shadow: inset 0px 0px 0px 1px grey; width: 25%"><%= meeting.meeting_name %></td>
 
     <td style="box-shadow: inset 0px 0px 0px 1px grey;width: 5%"><%= link_to edit_meeting_path(meeting) do  %>
       <i style="color:blue;" class="fa fa-pencil"></i><% end %></td>
@@ -65,7 +65,7 @@
     <% if meeting.contactpsn.nil? %>
     <td ><%= "!nicht vergeben!" %></td>
    <% else %>
-    <td style="width: 25%"><%= meeting.contactpsn.contact.name %></td>
+    <td style="width: 25%"><%= meeting.contact.contact_name %></td>
     <% end %>
     <td style="width: 10%"><%= meeting.date.strftime("%d.%m.%Y") %></td>
 

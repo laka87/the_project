@@ -3,8 +3,17 @@ class RegistrationsController < Devise::RegistrationsController
 protected
 
 
-def after_sign_up_path_for(resource)
-     new_user_session_path
+
+#def after_sign_up_path_for(resource)
+#  home_path
+#end
+
+def new
+  super
+end
+
+def create
+  super
 end
 
 private

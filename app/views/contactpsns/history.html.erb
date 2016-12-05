@@ -18,7 +18,7 @@
         <% if contactpsn.contact.blank? %>
         <td ><%= "..nicht vergeben.." %></td>
        <% else %>
-        <td ><%= contactpsn.contact.name %></td>
+        <td ><%= contactpsn.contact.contact_name %></td>
         <% end %>
         <td ><%= contactpsn.user.email %></td>
         <td ><%= contactpsn.created_at.strftime("[%d.%m.%y] um [%H:%M:%S]") %></td>

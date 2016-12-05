@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  $('#meeting_contact_title').autocomplete
+    source: $('#meeting_contact_title').data('autocomplete-source')
+
 ready = ->
   $('#meeting_date').datepicker(dateFormat: "dd.mm.yy");
 

@@ -27,7 +27,6 @@ end
 def index
   @search = Contact.search(params[:q])
   @contacts = @search.result.page(params[:page]).per_page(5)
-  @contacts
 end
 
 def show
@@ -67,6 +66,10 @@ def history
   @contacts = Contact.all
 end
 
+def autocomplete
+  @contacts = Contact.order(:contact_name).where("contact_name like ?", "%#{params[:term]}%")
+  render json: @contacts.map(&:contact_name)
+end
 
 
 private
@@ -76,7 +79,7 @@ def set_contact
 end
 
 def contact_params
-  params.require(:contact).permit(:name,:email, :description, :postalcode, :name_of_street, :name_of_town , :fax, :phone, :type_of_contact, :alt_adv_street, :alt_town, :alt_street, :alt_postalcode, :category)
+  params.require(:contact).permit(:contact_name,:email, :description, :postalcode, :name_of_street, :name_of_town , :fax, :phone, :type_of_contact, :alt_adv_street, :alt_town, :alt_street, :alt_postalcode, :category)
 end
 
 def is_admin?

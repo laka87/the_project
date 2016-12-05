@@ -13,26 +13,18 @@
   <%= @meeting.date.strftime("%d.%m.%y") %> [<%= @meeting.time_of_meeting %>]</font></td>
   <tr>
 
-  <td id="show-header"><u><strong>Name</strong></u>
-  <td id="show-header"><u><strong>Terminart</strong></u>
+  <td colspan="2" id="show-header"><u><strong>Name</strong></u>
   <tr>
 
-  <td><%= @meeting.name %></td>
-  <td><%= @meeting.category %></td></br>
+  <td colspan="2"><%= @meeting.meeting_name %></td>
   <tr>
 
-  <td id="show-header"><u><strong >Zielkontakt</strong></u>
-  <td id="show-header"><u><strong>Teilnehmer</strong></u></td>
+  <td colspan="2" id="show-header" ><u><strong>Teilnehmer</strong></u>
   <tr>
-  <% if @meeting.contactpsn.contact.name.blank? %>
-  <td><%= "nicht vergeben" %></td>
+  <% if @meeting.contact.contact_name.blank? %>
+  <td colspan="2"><%= "nicht vergeben" %></td>
   <% else %>
-  <td><%= @meeting.contactpsn.contact.name %></td>
-  <% end %>
-    <% if @meeting.contactpsn.full_name.blank? %>
-  <td><%= "nicht vergeben" %></td>
-  <% else %>
-  <td><%= @meeting.contactpsn.full_name %></td>
+  <td colspan="2"><%= @meeting.contact.contact_name %></td>
   <% end %>
 
 <tr>

@@ -10,13 +10,15 @@ Rails.application.routes.draw do
     resources :contactpsns
   end
 
+
+
+  get '/contactsauto' => 'contacts#autocomplete', as: :autocomplete
   get 'contactpsns/history' => 'contactpsns#history', as: :contactpsns_history
   get '/contacthistory' => 'contacts#history', as: :contacts_history
   get 'meetings/history' => 'meetings#history', as: :meetings_history
 
   #Routes Meetings
   resources :meetings do
-    get :autocomplete_contact_name, :on => :collection
     member do
       patch :complete
     end
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, :controllers => {registrations: 'registrations'}
-  resources :users, :only => [:index, :show, :edit]
-
+  devise_for :users
+  resources :users
 end

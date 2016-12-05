@@ -15,10 +15,10 @@
 
   <tr>
 <!-- Contactperon Content -->
-  <% if @contact.name.blank? %>
+  <% if @contact.contact_name.blank? %>
   <td><%= "nicht vergeben" %></td>
   <% else %>
-  <td><%= @contact.name %></td>
+  <td><%= @contact.contact_name %></td>
   <% end %>
 <!-- Name Content -->
   <td><%= @contact.type_of_contact %></td>

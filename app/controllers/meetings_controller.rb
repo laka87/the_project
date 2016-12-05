@@ -1,14 +1,15 @@
 class MeetingsController < ApplicationController
-  autocomplete :contact, :name
   before_action :authenticate_user!
   before_action :set_meeting, only: [:show, :edit, :update, :destroy, :complete]
+
+  autocomplete :contact, :contact_name, full: true
 
 def index
 
 
 
-@search = Meeting.joins(:contactpsn).search(params[:q])
-@meetings = @search.result.page(params[:page]).per_page(5)
+@search = Meeting.search(params[:q])
+@meetings = @search.result.includes(:contact).page(params[:page]).per_page(5)
 
 #@meetings = @meetings.paginate(:page => params[:page],:per_page => 5)
 
@@ -71,7 +72,7 @@ def set_meeting
 end
 
 def meeting_params
-  params.require(:meeting).permit(:name, :contactpsn_id, :description, :date, :category, :time_of_meeting)
+  params.require(:meeting).permit(:meeting_name, :contactpsn_id, :contact_id, :contact_title, :description, :date, :category, :time_of_meeting)
 end
 
 

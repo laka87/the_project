@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
   #Roots
-  root 'home#index'
   get '/home' => 'contacts#home', as: :home
-  get '/welcome' => 'home#index', as: :welcome
-
+  root 'contacts#home'
   #Routes contacts/contactperson
   resources :contacts do
     resources :contactpsns

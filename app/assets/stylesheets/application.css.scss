@@ -18,17 +18,14 @@
  *= require jquery-ui/datepicker
  *= require_tree .
  */
-
- @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "bootstrap-sprockets";
 
 .navbar-brand{
 
   font-size: 12px;
 
 }
-
-
 
 #welcome{
 
@@ -82,36 +79,41 @@
    background:      -o-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
    background:         linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
      font-family: 'Lato', sans-serif;
+
+   }
+
+   #loginbutton{
+       margin-top: 25%;
+       padding: 20px 20px 20px 20px;
+       font-size: 30px;
+       background: -webkit-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+       background:    -moz-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+       background:     -ms-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+       background:      -o-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+       background:         linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+       border: none;
+
+   }
+
+   #container{
+     width: 70%;
+     background: -webkit-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+     background:    -moz-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+     background:     -ms-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+     background:      -o-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+     background:         linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
+     font-family: 'Lato', sans-serif;
+     padding: 15px 15px;
+     border: solid 1px black;
+     margin-left: auto;
+     margin-right: auto;
    }
 
 
+
 .field{
-max-width: 100%
-
+max-width: auto;
 }
-#container {
-  width: 70%;
-  margin: 0 auto;
-  background: -webkit-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
-  background:    -moz-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
-  background:     -ms-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
-  background:      -o-linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
-  background:         linear-gradient(40deg, #99CCFF 10%, #0033CC 100%);
-  font-family: 'Lato', sans-serif;
-  padding: 15px 15px;
-  border: solid 1px black;
-  margin-top: 0px;
-}
-
-#container #notice {
-
-  font-family: 'Lato', sans-serif;
-  background: #00B205;
-  border-radius: 10px;
-  text-align: center;
-  color: black;
-}
-
 
 .show-field {
   text-align: center;
@@ -191,11 +193,6 @@ hr.style-eight {
    margin-bottom: 15px;
  }
 
- #container-input {
-   width:100%;
-   clear:both;
- }
-
 #form_border{
   text-align: left;
   font-weight: bold;
@@ -212,15 +209,6 @@ textarea {
   resize: both;
   max-width: 100%;
 }
-
- #container-forms {
-   width: 100%;
-   margin: 0 auto;
-   background-color: #FFF;
-   padding: 10px 10px;
-   border: none;
-   margin-top: 10px;
- }
 
  #flash_notice {
    color: #00B205;

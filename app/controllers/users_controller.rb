@@ -36,6 +36,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if destroy_user_session
+      redirect_to new_user_session_path
+    end
+  end
+
 
   private
 

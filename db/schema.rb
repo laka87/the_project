@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161202224356) do
     t.integer  "user_id"
     t.integer  "contactpsn_id"
     t.date     "date"
-    t.string   "category"
+    t.string   "importance"
     t.string   "time_of_meeting"
     t.datetime "completed_at"
     t.date     "date_hours"

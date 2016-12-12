@@ -26,20 +26,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
     <%= f.label :admin, "Rechte" %><br>
     <%= f.select :admin, options_for_select([["Admin",true],["Normaler User", false]]) %>
   </div>
-
+  
   <div class="actions">
     <%= f.submit "übernehmen" %>
   </div>

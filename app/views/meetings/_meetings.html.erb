@@ -24,7 +24,9 @@
   </tbody>
 </table>
 <br>
-<%= will_paginate @meetings, previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
+
+<%= will_paginate @meetings , previous_label: h("<"), next_label: h(">"), renderer: BootstrapPagination::Rails %>
+
 <table>
   <thead>
 <tr>
@@ -40,7 +42,7 @@
     <% if current_user == meeting.user %>
       <tr>
         <td ><%= meeting.meeting_name %></td>
-        <td ><%= meeting.date.strftime("%d.%m.%y") %></td>
+        <td ><%= meeting.date %></td>
         <% if meeting.contact.nil? %>
         <td align="center"><%= "Kontakt nicht vergeben" %></td>
         <% else %>

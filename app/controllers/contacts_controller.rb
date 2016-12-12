@@ -15,12 +15,6 @@ def home
   @meetings_by_date = @meetings.group_by(&:date)
   @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
-  @meetings_next_7_days = @meetings.paginate(:per_page => 5, :page => params[:page]).order(:date => "asc").where(:date => Time.now..Time.now.next_week.end_of_week).where(:category => "Termin" )
-  @meetings_next_7_days = @meetings_next_7_days.paginate(:page => params[:page], :per_page => 5)
-
-  @meetings_next_30_days = @meetings.order(:date => "asc").where(:date => Time.now..Time.now.next_month).where(:category => "Wiedervorlage" )
-  @meetings_next_30_days = @meetings_next_30_days.paginate(:page => params[:page], :per_page => 5)
-
 
 end
 

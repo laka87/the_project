@@ -13,13 +13,14 @@
  *= require_self
  *= require jquery-ui/core
  *= require jquery-ui/theme
- *= require dataTables/src/demo_table_jui
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require jquery-ui/datepicker
+ *= require jquery.datetimepicker
  *= require_tree .
  */
  @import "bootstrap";
  @import "bootstrap-sprockets";
+ @import "jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css";
 
 .navbar-brand{
 
@@ -108,7 +109,6 @@
      margin-left: auto;
      margin-right: auto;
    }
-
 
 
 .field{

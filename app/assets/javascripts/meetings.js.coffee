@@ -9,7 +9,7 @@ jQuery ->
 ready = ->
   $('#meeting_date').datepicker(dateFormat: "dd.mm.yy");
 
-  $('#reports').dataTable()
+  $('#histories').dataTable()
 
 $(document).ready(ready)
 #$(document).on('page:load', ready)

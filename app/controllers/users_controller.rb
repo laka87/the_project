@@ -31,8 +31,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(account_update_params)
-      redirect_to home_path
+    if @user.update(account_update_params)
+      redirect_to home_path, notice: 'Nutzer erfolgreich editiert'
+    else
+      render :edit
     end
   end
 
@@ -50,8 +52,14 @@ class UsersController < ApplicationController
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :surname, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:first_name, :surname, :email, :admin)
   end
+
+  def account_update_pw
+    params.require(:user).permit(:password, :password_confirmation)
+  end
+
+
 
 private
 

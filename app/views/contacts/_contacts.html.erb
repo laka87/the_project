@@ -1,7 +1,7 @@
 <%= link_to 'Zurück zum Dashboard', home_path, :class => "btn btn-default" %>
 </br>
 </br>
-<div id="tables" style="font-size:3">
+<div id="tables" style="font-size:3" style="table-layout:fixed" >
 <table>
   <thead>
     <td style="text-align:center; background-color:silver;" colspan="4"><%= link_to '+Kontakt', new_contact_path, :class => "btn btn-success" %></td>
@@ -46,8 +46,6 @@
 
   <tbody>
     <% @contacts.each do |contact| %>
-    <% if current_user == contact.user %>
-
       <tr>
         <td style="text-align:center; width: 20%"><%= contact.contact_name %></td>
         <td style="text-align:center; width: 15%"><%= contact.email %></td>
@@ -56,14 +54,24 @@
         <td style="text-align:center"><%= link_to '+Kontaktpers', new_contact_contactpsn_path(contact), :class => "btn btn-success" %></td>
         <td style="text-align:center"><%= link_to 'Kontaktpers', contact_contactpsns_path(contact), :class => "btn btn-success", 'data-no-turbolink'=> true %></td>
         <td style="text-align:center"><%= link_to contact do %>
-          <i style="opacity: 0.8; color:black" class="fa fa-eye"></i><% end %></td>
+        <i style="opacity: 0.8; color:black" class="fa fa-eye"></i><% end %></td>
 
+        <!-- Edit Button Condition -->
+        <% if current_user == contact.user || current_user.admin? %>
         <td style="text-align:center"><%= link_to edit_contact_path(contact) do %>
           <i style="opacity: 0.8; color:black" class="fa fa-pencil"></i><% end %></td>
+        <% else %>
+        <td style="text-align:center"><%= %>
+          <i style="opacity: 0.3; color:black" class="fa fa-pencil"></i></td>
+        <% end %>
 
+        <!-- Delete Button Condition -->
+        <% if current_user.admin? %>
         <td style="text-align:center"><%= link_to contact, method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-          <i style="opacity: 0.8; color:black" class="fa fa-trash"></i><% end %></td>
-
+        <i style="opacity: 0.8; color:black" class="fa fa-trash"></i><% end %></td>
+        <% else %>
+        <td style="text-align:center"><%= %>
+        <i style="opacity: 0.3; color:black" class="fa fa-trash"></i></td>
         <% end %>
       </tr>
   <% end %>

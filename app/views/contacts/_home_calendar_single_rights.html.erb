@@ -18,9 +18,12 @@
         <% @meetings_by_date[date].each do |meeting| %>
         <% if current_user == meeting.user %>
         <% if !meeting.completed_at.blank? || Time.now.to_formatted_s(:number) > meeting.date.to_formatted_s(:number) %>
-          <strike><li style="Opacity:0.4">[<%= meeting.time_of_meeting %>] <%= link_to meeting.contact.contact_name, meeting %></li></strike>
+          <strike><li style="Opacity:0.4">[<%= meeting.time_of_meeting %>] <%= link_to meeting.contact.contact_name, meeting %>|<%= meeting.meeting_name %></li></strike>
         <% elsif !meeting.contact.nil? %>
-          <li>[<%= meeting.time_of_meeting %>] <%= link_to meeting.contact.contact_name, meeting %></li>
+
+        <li style="background-color:#6699CC; border: 1px solid black; color: black">
+        [<%= meeting.time_of_meeting %>] <br><%= link_to meeting.contact.contact_name, meeting %>|<%= meeting.meeting_name%></li>
+
         <% else %>
          <li><%= link_to "Kein Teilnehmer für diesen Termin vergeben", edit_meeting_path(meeting) %></li>
         <% end %>

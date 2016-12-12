@@ -9,14 +9,13 @@
 <table >
   <tbody>
 
-  <td id="show-header"><u><strong>Email</strong></u>
-  <td id="show-header"><u><strong>Anzahl der Logins</strong></u>
-  <tr>
-
   <td colspan="2"><u><strong><font size="5">Datum:</strong></u>
   <%= @user.created_at.strftime("%d.%m.%y") %></font></td>
   <tr>
 
+  <td id="show-header"><u><strong>Email</strong></u>
+  <td id="show-header"><u><strong>Anzahl der Logins</strong></u>
+  <tr>
   <td><%= @user.email %></td>
   <td><%= @user.sign_in_count %></td></br>
   <tr>
@@ -24,7 +23,7 @@
   <td id="show-header"><u><strong >zuletzt eingeloggt</strong></u>
   <td id="show-header"><u><strong>Berechtigung</strong></u></td>
   <tr>
-  <td><%= @user.last_sign_in_at %></td>
+  <td><%= @user.last_sign_in_at.to_formatted_s %></td>
   <% if @user.admin == false %>
   <td><%= "normaler User" %></td>
   <% else %>

@@ -11,7 +11,8 @@ def index
 @search = Meeting.search(params[:q])
 @meetings = @search.result.includes(:contact).page(params[:page]).per_page(5)
 
-#@meetings = @meetings.paginate(:page => params[:page],:per_page => 5)
+
+@meetings_by_user = @meetings.paginate(:page => params[:page],:per_page => 5)
 
 @meetings_by_date = @meetings.group_by(&:date)
 
@@ -23,7 +24,6 @@ def show
 end
 
 def new
-
   @meeting = current_user.meetings.build
 end
 

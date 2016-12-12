@@ -31,7 +31,7 @@
       <th ><%= sort_link(@search,:last_name, "Name")%></th>
       <th ><%= sort_link(@search,:business_rel, "Kategorie") %></th>
       <th ><%= "Telefon" %></th>
-      <th ><%= "FAX" %></th>
+      <th ><%= "erstellt von" %></th>
       <th colspan="4">Operationen</th>
     </tr>
   </thead>
@@ -39,24 +39,35 @@
   <tbody>
     <% @contactpsns.each do |contactpsn| %>
     <% if !contactpsn.contact.nil? %>
-    <% if @contact.name == contactpsn.contact.name && current_user == contactpsn.user %>
+    <!-- <% if @contact.contact_name == contactpsn.contact.contact_name && current_user == contactpsn.user %>
+    <% end %> -->
       <tr>
         <td align="center" ><%= contactpsn.full_name %></td>
         <td align="center" ><%= contactpsn.business_rel %></td>
         <td align="center" ><%= contactpsn.phone_one %></td>
-        <td align="center" ><%= contactpsn.fax %></td>
+        <td align="center" ><%= contactpsn.user.full_name %></td>
         <td align="center" colspan="1"><%= link_to "+Meeting" , new_meeting_path,  :class => "btn btn-success"  %></td>
         <td align="center" colspan="1"><%= link_to contact_contactpsn_path(@contact, contactpsn) do %>
-            <i style="opacity: 0.5;" class="fa fa-eye"></i><% end %></td>
+            <i style="opacity: 0.8;color:black" class="fa fa-eye"></i><% end %></td>
 
+        <!-- Edit Button Condition -->
+        <% if current_user == contactpsn.user || current_user.admin? %>
         <td align="center" colspan="1"><%= link_to edit_contact_contactpsn_path(@contact, contactpsn) do %>
-            <i style="opacity: 0.5;" class="fa fa-edit"></i><% end %></td>
-
+            <i style="opacity: 0.8;color:black"  class="fa fa-edit"></i><% end %></td>
+        <% else %>
+        <td align="center" colspan="1"><%= %>
+            <i style="opacity: 0.3; color:black" class="fa fa-edit"></i></td>
+         <% end %>
+        <!-- Delete Button Condition -->
+        <% if current_user.admin? %>
         <td align="center" colspan="1"><%= link_to contact_contactpsn_path(@contact, contactpsn), method: :delete, data: { confirm: 'Sind sie Sicher?' } do %>
-            <i style="opacity: 0.5;" class="fa fa-trash"></i><% end %></td>
+            <i style="opacity: 0.8;color:black" class="fa fa-trash"></i><% end %></td>
+        <% else %>
+        <td align="center" colspan="1"><%= %>
+            <i style="opacity: 0.3;color:black" class="fa fa-trash"></i></td>
       </tr>
+       <% end %>
       <% end %>
-    <% end %>
     <% end %>
   </tbody>
 </table>

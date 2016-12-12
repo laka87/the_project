@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-    $('#container', '.login').hide()
+    $('.login').hide()
     $('#loginbutton').on "click", (e)->
       e.preventDefault()
       $(this).hide();
-      $('#container', '.login').show();
+      $('.login').show();

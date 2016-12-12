@@ -20,6 +20,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require jquery-ui/datepicker
+//= require jquery.datetimepicker
 //= require turbolinks
+
 
 $.fn.dataTable.ext.errMode= "none";

@@ -4,7 +4,7 @@
 
 jQuery ->
   ready = ->
-    $('#reports').dataTable()
+    $('#histories').dataTable()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -6,8 +6,8 @@ class ContactpsnsController < ApplicationController
 
 #Index Method mit Searchable results param über Sunpot
 def index
-  @search = Contactpsn.joins(:contact).search(params[:q])
-  @contactpsns = @search.result.page(params[:page]).per_page(5)
+  @q = Contactpsn.ransack(params[:q])
+  @contactpsns = @q.result.includes(:user,:contact).page(params[:page]).per_page(5)
 end
 
 def show
@@ -24,7 +24,7 @@ def create
   @contactpsn.contact_id = @contact.id
   @contactpsn.category = "Kontaktperson"
   if @contactpsn.save
-    redirect_to contact_contactpsns_path
+    redirect_to contact_contactpsns_path, notice: " @contactpsn.full_name  erfolgreich erstellt!"
   else render "new"
   end
 end

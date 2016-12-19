@@ -30,6 +30,7 @@ def full_name=(s)
   end
 
 
+
 #t.integer  "user_id"
 #t.integer  "contact_id"
 #t.string   "category"
@@ -54,5 +55,6 @@ def full_name=(s)
 #Validierungen
 validates :last_name, presence: true
 validates :email, presence: true
+
 
 end

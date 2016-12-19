@@ -9,12 +9,16 @@
   <tbody>
     <tr>
 
-  <%= search_form_for([@contact,@search]) do |f| %>
+  <%= search_form_for [@contact,@q] do |f| %>
 
-  <td style="text-align:center; background-color:silver;">
-      <%= f.label :last_name_or_business_rel_cont, "Suche nach Nachnamen/Kategorie" %>
-      <%= f.text_field :last_name_or_business_rel_cont %>
+  <td style="text-align:left; background-color:silver;">
+          <div style="text-align:center; background-color:silver;">  <%= f.label :last_name_or_business_rel_or_user_surname_cont, "Suche nach Nachnamen/Kategorie" %>
+      <%= f.search_field :last_name_or_business_rel_or_user_surname_cont %></br>
+      <%= "und/oder"%></br>
+          <div style="text-align:center; background-color:silver;">  <%= f.label :user_surname_or_user_first_name_cont, "Suche nach Namen der Ersteller" %>
+      <%= f.search_field :user_surname_or_user_first_name_cont %>
 
+      <div style="text-align:center; background-color:silver;">
       <%= f.submit "Suchen", :class => "btn btn-success"  %></td>
 
       <% end %>
@@ -28,8 +32,8 @@
 <table>
   <thead>
     <tr>
-      <th ><%= sort_link(@search,:last_name, "Name")%></th>
-      <th ><%= sort_link(@search,:business_rel, "Kategorie") %></th>
+      <th ><%= sort_link(@q,:last_name, "Name")%></th>
+      <th ><%= sort_link(@q,:business_rel, "Kategorie") %></th>
       <th ><%= "Telefon" %></th>
       <th ><%= "erstellt von" %></th>
       <th colspan="4">Operationen</th>
@@ -42,9 +46,17 @@
     <!-- <% if @contact.contact_name == contactpsn.contact.contact_name && current_user == contactpsn.user %>
     <% end %> -->
       <tr>
+        <% if contactpsn.first_name.blank? %>
+        <td align="center" > _ n.a. _ <%= contactpsn.last_name %></td>
+        <% else %>
         <td align="center" ><%= contactpsn.full_name %></td>
+        <% end %>
         <td align="center" ><%= contactpsn.business_rel %></td>
+        <% if !contactpsn.phone_one.blank? %>
+        <td align="center" ><%= "nicht hinterlegt" %></td>
+        <% else %>
         <td align="center" ><%= contactpsn.phone_one %></td>
+        <% end %>
         <td align="center" ><%= contactpsn.user.full_name %></td>
         <td align="center" colspan="1"><%= link_to "+Meeting" , new_meeting_path,  :class => "btn btn-success"  %></td>
         <td align="center" colspan="1"><%= link_to contact_contactpsn_path(@contact, contactpsn) do %>

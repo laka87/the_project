@@ -48,6 +48,8 @@ gem 'will_paginate-bootstrap'
 #ransack
 gem 'ransack'
 
+gem 'rails-i18n'
+
 # Use Devise
  gem 'devise', '~> 4.1', '>= 4.1.1'
 

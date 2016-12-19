@@ -133,8 +133,12 @@ max-width: auto;
  }
 
  #show-header {
- background-color: silver;
- padding: 2px;
+   background: -webkit-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:    -moz-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:     -ms-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:      -o-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:         linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   padding: 2px;
 
 }
 
@@ -154,7 +158,13 @@ hr.style-eight {
    top: -0.7em;
    font-size: 1.5em;
    padding: 0 0.25em;
-   background: white; }
+   background: -webkit-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:    -moz-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:     -ms-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:      -o-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:         linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   border: 1px solid black;
+ }
 
  h3 {
    text-align: center;
@@ -233,16 +243,22 @@ textarea {
 
 
  .error_messages, #error_explanation {
-   width: 400px;
+   width: 50%;
    border: 2px solid #CF0000;
    padding: 0px;
+   margin: 0 auto;
    padding-bottom: 12px;
    margin-bottom: 20px;
-   background-color: #f0f0f0;
-   font-size: 12px;
-
+   background: -webkit-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:    -moz-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:     -ms-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:      -o-linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   background:         linear-gradient(40deg, #99CCFF 10%, #CCCCFF 100%);
+   font-size: 14px;
+   font-weight: bold;
+   text-align: center;
    h2 {
-     text-align: left;
+     text-align: center;
      font-weight: bold;
      padding: 5px 10px;
      font-size: 12px;

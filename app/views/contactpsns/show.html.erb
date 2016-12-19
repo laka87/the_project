@@ -3,7 +3,7 @@
 <div id="tables">
 <div class="show-field">
 
-<u><strong><h3>Kopieransicht</h3></strong></br></u>
+<u><strong><h3>Kopieransicht</h3></strong></u>
 </br>
 
 <table><!-- container-forms -->
@@ -34,10 +34,10 @@
   <td><%= @contactpsn.full_name %></td>
   <% end %>
 <!-- Name Content -->
-  <% if @contactpsn.contact.name.blank? %>
+  <% if @contactpsn.contact.contact_name.blank? %>
   <td><%= "nicht vergeben" %></td>
   <% else %>
-  <td><%= @contactpsn.contact.name %></td>
+  <td><%= @contactpsn.contact.contact_name %></td>
   <% end %>
 
   <tr>
@@ -114,7 +114,6 @@
   </tbody><!-- container-forms -->
 </table><!-- container-forms -->
 <% end %>
-</br>
 </br>
 
 <div align="center" ><%= link_to 'Editieren', edit_contact_contactpsn_path(@contact, @contactpsn), :class => "btn btn-default"  %> |

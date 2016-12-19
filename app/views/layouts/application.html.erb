@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" >
   <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"> </script>
 
-
-
   <!--<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -23,8 +21,18 @@
 <% !render partial: 'layouts/shared/navbar'  %>
 <% end %>
 
-
 <%= yield %>
+
+<script>
+$(document).ready(function() {
+  setTimeout(function(){
+      $('#notice').fadeOut("slow", function() {
+      $(this).remove();
+      })
+  }, 4500);
+});
+
+</script>
 
 </body>
 </html>

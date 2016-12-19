@@ -19,10 +19,38 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  date:
-    formats:
-      default: "%d.%m.%Y"
-  time:
-    formats:
-      default: "%d.%m.%Y %H:%M"
+de:
+  activerecord:
+    attributes:
+      contactpsn:
+        email: "Email-Feld"
+        last_name: "Nachname"
+        first_name: "Vorname"
+        phone_one: "Telefon 1"
+        phone_two: "Telefon 2"
+        department: "Abteilung"
+        call: "Anrede"
+        position: "Position"
+        category: "Kategorie"
+        fax: "Fax"
+        business_rel: "Firmenbezug"
+        description: "Beschreibung"
+      contact:
+        contact_name: "Kontaktname"
+        description: "Beschreibung"
+        category: "Kategorie"
+        postalcode: "PLZ"
+        email: "Email-Feld"
+        phone: "Telefon"
+        webaddress: "Webadresse"
+        fax: "Fax"
+        type_of_contact: "Kontakttyp"
+        name_of_street: "Straßenname"
+        name_of_town: "Stadtname"
+      meeting:
+        meeting_name: "Terminname"
+        description: "Beschreibung"
+        date: "Datum"
+        importance: "Priorität"
+        time_of_meeting: "Terminzeit"
+        contact_title: "Terminpartner"

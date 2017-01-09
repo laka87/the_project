@@ -27,10 +27,20 @@
   <td colspan="2"><%= @meeting.contact.contact_name %></td>
   <% end %>
 
-<tr>
+  <tr>
   <td colspan="2" id="show-header"><u><strong>Information</strong></u></td>
-<tr>
+  <tr>
   <td colspan="2"><%= @meeting.description %></td>
+  <tr>
+  <td colspan="2" id="show-header" ><u><strong>Status</strong></u>
+  <tr>
+  <% if !@meeting.completed_at.blank? %>
+  <td colspan="2"><%= "abgeschlossen am " %><%=  @meeting.completed_at %></td>
+  <% elsif Time.now.to_formatted_s(:number) > @meeting.date.to_formatted_s(:number) %>
+    <td colspan="2"><%= "ausgelaufen am " %><%=  @meeting.date %></td>
+  <% else %>
+    <td colspan="2"><%= "Verbleibende Zeit " %><%=  @meeting.remaining_time %></td>
+  <% end %>
 
   </tbody>
 </table>

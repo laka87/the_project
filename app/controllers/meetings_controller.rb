@@ -9,7 +9,7 @@ def index
 
 
 @search = Meeting.search(params[:q])
-@meetings = @search.result.includes(:contact).page(params[:page]).per_page(5)
+@meetings = @search.result.includes(:contact)
 
 
 @meetings_by_user = @meetings.paginate(:page => params[:page],:per_page => 5)
@@ -43,6 +43,7 @@ end
 
 def update
   if @meeting.update(meeting_params)
+    @meeting.update_attribute(:completed_at, nil)
     redirect_to "/meetings", notice: "Erfolgreich editiert!"
   else render "edit"
   end
@@ -60,7 +61,7 @@ end
 
 def complete
   if @meeting.update_attribute(:completed_at, Time.now)
-  redirect_to home_path
+  redirect_to "/meetings", notice: "Termin manuell abgeschlossen!"
   end
 end
 

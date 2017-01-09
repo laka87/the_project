@@ -35,5 +35,9 @@ def contact_title=(contact_name)
       self.contact = Contact.where(:contact_name => contact_name).first if contact_name.present?
   end
 
+  #Validierungen
+  validates :meeting_name, presence: true
+  validates :date, presence: true
+  validates :contact_id, presence: true
 
 end

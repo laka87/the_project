@@ -30,24 +30,6 @@ def full_name=(s)
   end
 
 
-
-#t.integer  "user_id"
-#t.integer  "contact_id"
-#t.string   "category"
-#t.string   "position"
-#t.string   "call"
-#t.string   "last_name"
-#t.string   "email"
-#t.string   "department"
-#t.string   "phone_one"
-#t.string   "phone_two"
-#t.string   "fax"
-#t.string   "business_rel"
-#t.string   "alt_postalcode"
-#t.string   "alt_street"
-#t.string   "alt_town"
-#t.string   "alt_adv_street"
-
 #Funktion für Farbanzeige
   def colorswitch
     #//todo
